@@ -8,7 +8,7 @@ spec:
     - name: pathToYamlFile
       type: string
       description: The path to the yaml file to deploy within the git source
-      default: $(resources.inputs.frontend-resource.path)/cicd/orders/k8s/deploy.yaml
+      default: $(resources.inputs.orders.path)/cicd/orders/k8s/deploy.yaml
   resources:
     inputs:
       - name: orders-resource
@@ -22,8 +22,8 @@ spec:
        - "-f"
        - "$(params.pathToYamlFile)"
        - "-f"
-       - "$(resources.inputs.frontend-resource.path)/cicd/orders/k8s/svc.yaml"
+       - "$(resources.inputs.orders.path)/cicd/orders/k8s/svc.yaml"
        - "-f"
-       - "$(resources.inputs.frontend-resource.path)/cicd/orders/k8s/order-db.yaml"
+       - "$(resources.inputs.orders.path)/cicd/orders/k8s/order-db.yaml"
        - "-f"
-       - "$(resources.inputs.frontend-resource.path)/cicd/orders/k8s/order-db-svc.yaml"
+       - "$(resources.inputs.orders.path)/cicd/orders/k8s/order-db-svc.yaml"
