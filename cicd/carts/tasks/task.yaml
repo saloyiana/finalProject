@@ -6,10 +6,11 @@ spec:
   params:
     - name: IMAGE
       description: Name (reference) of the image to build.
+      default: "saloyiana/carts"
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.carts-resource.path)/Dockerfile
+      default: $(resources.inputs.carts-resource.path)/carts/Dockerfile
     - name: pathToContext
       type: string
       description: |

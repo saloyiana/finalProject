@@ -9,7 +9,7 @@ spec:
   tasks:
     - name: build
       taskRef:
-        name: build-docker-image-from-git-source-front-end
+        name: build-docker-image-from-git-source-carts
       resources:
         inputs: 
         - name: carts-resource
