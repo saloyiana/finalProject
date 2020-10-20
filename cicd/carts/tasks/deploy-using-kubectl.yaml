@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: carts-deploy-using-kubectl
+  serviceAccountName: build-bot
+spec:
+  params:
+    - name: pathToYamlFile
+      type: string
+      description: The path to the yaml file to deploy within the git source
+      default: $(resources.inputs.carts-resource.path)/user/k8s/deploy.yaml
+  resources:
+    inputs:
+      - name: carts
+        type: git
+  steps:
+   - name: run-kubectl
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(params.pathToYamlFile)"
+       - "-f"
+       - "$(resources.inputs.carts-resource.path)/user/k8s/svc.yaml"

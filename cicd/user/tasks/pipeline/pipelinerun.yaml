@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: deployrunner
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: user-pipeline 
+  resources:
+    - name: source
+      resourceRef:
+        name: user

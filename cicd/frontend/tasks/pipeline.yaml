@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: frontend-pipeline
+spec:
+  resources:
+    - name: source
+      type: git
+  tasks:
+    - name: build
+      taskRef:
+        name: build-docker-image-from-git-source-front-end
+      resources:
+        inputs: 
+        - name: frontend-resource
+          resource: source
+    - name: deploy-using-kubectl
+      runAfter: ["build"]
+      taskRef:
+        name: deploy-using-kubectl
+      resources:
+        inputs:
+        - name: frontend-resource
+          resource: source

@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: runner
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: build-docker-image-from-git-source-queue-master
+  params:
+  - name: IMAGE
+    value: "saloyiana/queue-master"
+  resources:
+    inputs:
+    - name: docker-source
+      resourceRef:
+        name: queue-master
