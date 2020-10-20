@@ -23,3 +23,5 @@ spec:
        - "$(params.pathToYamlFile)"
        - "-f"
        - "$(resources.inputs.frontend-resource.path)/cicd/frontend/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.frontend-resource.path)/cicd/frontend/k8s/ingress.yaml"

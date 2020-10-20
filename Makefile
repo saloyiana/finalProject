@@ -27,13 +27,24 @@ namespaces:
 	kubectl create namespace prod
 
 main:
-	kubectl apply -f cicd/frontend/tasks/main/* -n test
+	kubectl apply -f cicd/frontend/tasks/main/sa.yaml -f cicd/frontend/tasks/main/role.yaml -n test
 frontend:
-	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml -f cicd/frontend/tasks/task.yaml -f -f cicd/frontend/tasks/deploy-using-kubectl.yaml -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
+	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/frontend/tasks/task.yaml -n test
+	kubectl apply -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl apply -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
+	kubectl apply -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test 
+frontend-down:
+	kubectl delete -f cicd/frontend/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/frontend/tasks/task.yaml -n test
+	kubectl delete -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl delete -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
+	kubectl delete -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test 
 users:
 carts:
 catalogue:
 payment:
 shipping:
 queue-master:
-
+logs:
+	tkn pr logs -f -n test
