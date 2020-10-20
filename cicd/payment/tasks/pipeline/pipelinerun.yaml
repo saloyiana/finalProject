@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: payment-runner
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: payment-pipeline 
+  resources:
+    - name: source
+      resourceRef:
+        name: payment

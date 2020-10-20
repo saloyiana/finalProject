@@ -6,10 +6,11 @@ spec:
   params:
     - name: IMAGE
       description: Name (reference) of the image to build.
+      default: "saloyiana/payment"
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.payment.path)/docker/payment/Dockerfile
+      default: $(resources.inputs.payment.path)/payment/docker/payment/Dockerfile
     - name: pathToContext
       type: string
       description: |
