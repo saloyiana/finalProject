@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  name: deployrunner
+  name: frontend-runner
 spec:
   serviceAccountName: build-bot
   pipelineRef:
@@ -9,4 +9,4 @@ spec:
   resources:
     - name: source
       resourceRef:
-        name: docker-source
+        name: frontend-resource

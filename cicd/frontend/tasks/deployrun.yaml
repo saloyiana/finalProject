@@ -1,9 +1,9 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: deploy-runner
+  name: frontend-run
 spec:
   serviceAccountName: build-bot
   taskRef:
-    name: deploy-using-kubectl
+    name: frontend-deploy-using-kubectl
 
