@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: queue-master-run
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: queue-master-deploy-using-kubectl
+

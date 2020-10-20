@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: queue-master-runner
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: queue-master-pipeline 
+  resources:
+    - name: source
+      resourceRef:
+        name: queue-master
