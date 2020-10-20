@@ -6,10 +6,11 @@ spec:
   params:
     - name: IMAGE
       description: Name (reference) of the image to build.
+      default: "saloyiana/shipping"
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.shipping.path)/Dockerfile
+      default: $(resources.inputs.shipping.path)/shipping/Dockerfile
     - name: pathToContext
       type: string
       description: |
