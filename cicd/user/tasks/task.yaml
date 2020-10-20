@@ -6,10 +6,11 @@ spec:
   params:
     - name: IMAGE
       description: Name (reference) of the image to build.
+      default: "saloyiana/user"
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.user.path)/Dockerfile-release
+      default: $(resources.inputs.user.path)/user/Dockerfile-release
     - name: pathToContext
       type: string
       description: |
