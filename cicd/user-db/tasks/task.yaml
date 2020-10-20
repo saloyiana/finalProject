@@ -9,7 +9,7 @@ spec:
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.user-db.path)/docker/user-db/Dockerfile
+      default: $(resources.inputs.user-db.path)/user/docker/user-db/Dockerfile
     - name: pathToContext
       type: string
       description: |

@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: user-db-pipeline
+spec:
+  resources:
+    - name: source
+      type: git
+  tasks:
+    - name: build
+      taskRef:
+        name: build-docker-image-from-git-source-user-db
+      resources:
+        inputs: 
+        - name: user-db
+          resource: source
+    - name: user-db-deploy-using-kubectl
+      runAfter: ["build"]
+      taskRef:
+        name: user-db-deploy-using-kubectl
+      resources:
+        inputs:
+        - name: user-db
+          resource: source

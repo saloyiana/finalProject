@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: user-db-runner
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: user-db-pipeline 
+  resources:
+    - name: source
+      resourceRef:
+        name: user-db

@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: user-db-run
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: user-db-deploy-using-kubectl
+
