@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: frontend-run
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: build-docker-image-from-git-source-front-end
+  resources:
+    inputs:
+    - name: frontend-resource
+      resourceRef:
+        name: frontend-resource
+  params:
+    - name: IMAGE
+      value: "saloyiana/frontend"

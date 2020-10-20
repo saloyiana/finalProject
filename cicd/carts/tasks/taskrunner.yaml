@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: carts-runner
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: build-docker-image-from-git-source-carts
+  params:
+  - name: IMAGE
+    value: "saloyiana/carts"
+  resources:
+    inputs:
+    - name: docker-source
+      resourceRef:
+        name: carts-resource
