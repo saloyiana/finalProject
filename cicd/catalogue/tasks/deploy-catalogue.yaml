@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: catalogue-deploy-using-kubectl
+  serviceAccountName: build-bot
+spec:
+  params:
+    - name: pathToYamlFile
+      type: string
+      description: The path to the yaml file to deploy within the git source
+      default: $(resources.inputs.catalogue.path)cicd/catalogue/k8s/deploy.yaml
+  resources:
+    inputs:
+      - name: catalogue
+        type: git
+  steps:
+   - name: run-kubectl
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(params.pathToYamlFile)"
+       - "-f"
+       - "$(resources.inputs.catalogue.path)/cicd/catalogue/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.catalogue.path)/cicd/catalogue/catalogue-db/k8s/catalogue-db-dep.yaml"
+       - "-f"
+       - "$(resources.inputs.catalogue.path)/cicd/catalogue/catalogue-db/k8s/catalogue-db-svc.yaml"

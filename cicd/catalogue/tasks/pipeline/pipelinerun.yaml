@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: catalogue-run
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: catalogue
+  resources:
+    - name: source
+      resourceRef:
+        name: catalogue

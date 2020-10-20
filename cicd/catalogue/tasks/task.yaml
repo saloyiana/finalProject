@@ -1,15 +1,16 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: build-docker-image-from-git-source
+  name: build-docker-image-from-git-source-catalogue
 spec:
   params:
     - name: IMAGE
       description: Name (reference) of the image to build.
+      default: "saloyiana/catalogue"
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.catalogue.path)/docker/catalogue/Dockerfile
+      default: $(resources.inputs.catalogue.path)/catalogue/docker/catalogue/Dockerfile
     - name: pathToContext
       type: string
       description: |

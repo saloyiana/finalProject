@@ -5,7 +5,7 @@ metadata:
 spec:
   serviceAccountName: build-bot
   taskRef:
-    name: build-docker-image-from-git-source
+    name: build-docker-image-from-git-source-catalogue
   params:
   - name: IMAGE
     value: "saloyiana/catalogue"
