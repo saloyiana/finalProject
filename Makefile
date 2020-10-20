@@ -1,6 +1,7 @@
 #FIRST STEP:
 
 .PHONY:
+default: 
 
 cluster:
 	k3d cluster create shockShop \
@@ -25,7 +26,10 @@ namespaces:
 	kubectl create namespace test
 	kubectl create namespace prod
 
+main:
+	kubectl apply -f cicd/frontend/tasks/main/* -n test
 frontend:
+	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml -f cicd/frontend/tasks/task.yaml -f -f cicd/frontend/tasks/deploy-using-kubectl.yaml -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
 users:
 carts:
 catalogue:
