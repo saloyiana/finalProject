@@ -1,7 +1,7 @@
 #FIRST STEP:
 
 .PHONY:
-up: cluster cicd cli namespaces install-ingress main frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
+up: cluster namespaces tekton cli install-ingress main frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
 cluster:
 	k3d cluster create sockShop \
 	    -p 80:80@loadbalancer \
@@ -12,7 +12,7 @@ cluster:
 	    -v /var/run/docker.sock:/var/run/docker.sock \
 	    --k3s-server-arg '--no-deploy=traefik' \
 	    --agents 3
-cicd:
+tekton:
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml
 	kubectl patch svc tekton-dashboard -n tekton-pipelines --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
@@ -25,7 +25,7 @@ cli:
 namespaces:
 	kubectl create namespace test
 	kubectl create namespace prod
-
+	kubectl create namespace ingress-nginx
 install-ingress:
 	echo "Ingress: install" | tee -a output.log
 	kubectl apply -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml | tee -a output.log
