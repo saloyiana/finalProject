@@ -19,12 +19,12 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 	apk add --update libcap
 
 WORKDIR /
-COPY --from=0 catalogue /catalogue
+COPY --from=0 app app
 COPY images/ /images/
 
-RUN	chmod +x /catalogue && \
-	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /catalogue /images && \
-	setcap 'cap_net_bind_service=+ep' /catalogue
+RUN	chmod +x /app && \
+	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
+	setcap 'cap_net_bind_service=+ep' /app
 
 USER ${SERVICE_USER}
 
@@ -42,5 +42,5 @@ LABEL org.label-schema.vendor="saloyiana" \
   org.label-schema.vcs-ref="${COMMIT}" \
   org.label-schema.schema-version="1.0"
 
-CMD ["/catalogue", "-port=80"]
+CMD ["/app", "-port=80"]
 EXPOSE 80
