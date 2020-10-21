@@ -17,10 +17,10 @@ spec:
     - name: build-db
       taskRef: 
         name: build-docker-image-from-git-source-user-db
-        resources:
-          inputs:
-          - name: user
-            resource: source
+      resources:
+        inputs:
+        - name: user
+          resource: source
     - name: deploy-using-kubectl
       runAfter: ["build", "build-db"]
       taskRef:
