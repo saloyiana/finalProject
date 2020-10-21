@@ -6,6 +6,7 @@ RUN mkdir -p /data/db-users \
     && chown -R mongodb:mongodb /data/db-users
 
 RUN su - mongodb && mongod --fork --logpath /var/log/mongodb.log --dbpath /data/db-users \
+    chmod a+rwx /tmp/scripts/mongo_create_insert.sh \
     && /tmp/scripts/mongo_create_insert.sh \
 #    && mongod --dbpath /data/db-users --shutdown \
     && chown -R mongodb /data/db-users
