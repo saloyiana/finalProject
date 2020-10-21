@@ -17,7 +17,7 @@ spec:
     - name: deploy-using-kubectl
       runAfter: ["build"]
       taskRef:
-        name: deploy-using-kubectl
+        name: user-deploy-using-kubectl
       resources:
         inputs:
         - name: user

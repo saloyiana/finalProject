@@ -101,7 +101,7 @@ payment-down:
 	kubectl delete -f cicd/payment/tasks/deploy-using-kubectl.yaml -n test 
 	kubectl delete -f cicd/payment/tasks/pipeline/pipeline.yaml -n test
 	kubectl delete -f cicd/payment/tasks/pipeline/pipelinerun.yaml -n test
-user:
+user-install:
 	kubectl apply -f cicd/user/tasks/pipelineResource.yaml -n test 
 	kubectl apply -f cicd/user/tasks/task.yaml -n test
 	kubectl apply -f cicd/user/user-db/tasks/task.yaml -n test
