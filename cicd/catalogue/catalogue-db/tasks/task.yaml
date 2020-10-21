@@ -6,19 +6,20 @@ spec:
   params:
     - name: IMAGE
       description: Name (reference) of the image to build.
+      default: "saloyiana/catalogue-db"
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.catalogue-db.path)/docker/catalogue/Dockerfile
+      default: $(resources.inputs.catalogue.path)/catalogue/Dockerfile-db 
     - name: pathToContext
       type: string
       description: |
         The build context used by Kaniko
         (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-      default: $(resources.inputs.catalogue-db.path)
+      default: $(resources.inputs.catalogue.path)/catalogue/
   resources:
     inputs:
-      - name: catalogue-db
+      - name: catalogue
         type: git
   steps:
     - name: build-and-push

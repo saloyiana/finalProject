@@ -46,13 +46,27 @@ cart:
 	kubectl apply -f cicd/carts/tasks/deploy-carts.yaml -n test 
 	kubectl apply -f cicd/carts/tasks/pipeline/pipeline.yaml -n test
 	kubectl apply -f cicd/carts/tasks/pipeline/pipelinerun.yaml -n test 
-carts-down:
+cart-down:
 	kubectl delete -f cicd/carts/tasks/pipelineResource.yaml -n test 
 	kubectl delete -f cicd/carts/tasks/task.yaml -n test
 	kubectl delete -f cicd/carts/tasks/deploy-carts.yaml -n test 
 	kubectl delete -f cicd/carts/tasks/pipeline/pipeline.yaml -n test
 	kubectl delete -f cicd/carts/tasks/pipeline/pipelinerun.yaml -n test
-catalogue:
+catalogue-install:
+	kubectl apply -f cicd/catalogue/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/task.yaml -n test
+	kubectl apply -f cicd/catalogue/catalogue-db/tasks -n test
+	kubectl apply -f cicd/catalogue/tasks/deploy-catalogue.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/pipeline/pipeline.yaml -n test
+	kubectl apply -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test
+catalogue-down:
+	kubectl delete -f cicd/catalogue/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/catalogue/tasks/task.yaml -n test
+	kubectl delete -f cicd/catalogue/catalogue-db/tasks -n test
+	kubectl delete -f cicd/catalogue/tasks/deploy-catalogue.yaml -n test 
+	kubectl delete -f cicd/catalogue/tasks/pipeline/pipeline.yaml -n test
+	kubectl delete -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test
+
 payment:
 shipping:
 queue-master:

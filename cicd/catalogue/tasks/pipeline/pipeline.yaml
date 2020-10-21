@@ -14,8 +14,15 @@ spec:
         inputs: 
         - name: catalogue
           resource: source
+    - name: build-db
+      taskRef:
+        name: build-docker-image-from-git-source-catalogue-db
+      resources:
+        inputs:
+        - name: catalogue
+          resource: source
     - name: deploy-using-kubectl
-      runAfter: ["build"]
+      runAfter: ["build", "build-db"]
       taskRef:
         name: catalogue-deploy-using-kubectl
       resources:
