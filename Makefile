@@ -1,10 +1,9 @@
 #FIRST STEP:
 
 .PHONY:
-default: cluster cicd cli namespaces install-ingress main 
-
+up: cluster cicd cli namespaces install-ingress main frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
 cluster:
-	k3d cluster create labs \
+	k3d cluster create sockShop \
 	    -p 80:80@loadbalancer \
 	    -p 443:443@loadbalancer \
 	    -p 30000-32767:30000-32767@server[0] \
@@ -50,7 +49,7 @@ frontend-down:
 	kubectl delete -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
 	kubectl delete -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
 	kubectl delete -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test 
-cart:
+cart-install:
 	kubectl apply -f cicd/carts/tasks/pipelineResource.yaml -n test 
 	kubectl apply -f cicd/carts/tasks/task.yaml -n test
 	kubectl apply -f cicd/carts/tasks/deploy-carts.yaml -n test 
@@ -141,7 +140,6 @@ queue-master-down:
 	kubectl delete -f cicd/queue-master/tasks/deploy-using-kubectl.yaml -n test 
 	kubectl delete -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test
 	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml -n test
-
 
 logs:
 	tkn pr logs -f -n test
