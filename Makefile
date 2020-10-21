@@ -1,7 +1,7 @@
 #FIRST STEP:
 
 .PHONY:
-default: 
+default: cluster tekton cli namespaces main 
 
 cluster:
 	k3d cluster create shockShop \
@@ -40,8 +40,18 @@ frontend-down:
 	kubectl delete -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
 	kubectl delete -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
 	kubectl delete -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test 
-users:
-carts:
+cart:
+	kubectl apply -f cicd/carts/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/carts/tasks/task.yaml -n test
+	kubectl apply -f cicd/carts/tasks/deploy-carts.yaml -n test 
+	kubectl apply -f cicd/carts/tasks/pipeline/pipeline.yaml -n test
+	kubectl apply -f cicd/carts/tasks/pipeline/pipelinerun.yaml -n test 
+carts-down:
+	kubectl delete -f cicd/carts/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/carts/tasks/task.yaml -n test
+	kubectl delete -f cicd/carts/tasks/deploy-carts.yaml -n test 
+	kubectl delete -f cicd/carts/tasks/pipeline/pipeline.yaml -n test
+	kubectl delete -f cicd/carts/tasks/pipeline/pipelinerun.yaml -n test
 catalogue:
 payment:
 shipping:
