@@ -9,9 +9,9 @@ RUN gvt restore && \
 
 FROM alpine:3.4
 
-ENV	SERVICE_USER=myuser \
+ENV	SERVICE_USER=saloyiana \
 	SERVICE_UID=10001 \
-	SERVICE_GROUP=mygroup \
+	SERVICE_GROUP=catalogue \
 	SERVICE_GID=10001
 
 RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
@@ -19,12 +19,12 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 	apk add --update libcap
 
 WORKDIR /
-COPY --from=0 /app /app
+COPY --from=0 catalogue /catalogue
 COPY images/ /images/
 
-RUN	chmod +x /app && \
-	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
-	setcap 'cap_net_bind_service=+ep' /app
+RUN	chmod +x /catalogue && \
+	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /catalogue /images && \
+	setcap 'cap_net_bind_service=+ep' /catalogue
 
 USER ${SERVICE_USER}
 
@@ -42,5 +42,5 @@ LABEL org.label-schema.vendor="saloyiana" \
   org.label-schema.vcs-ref="${COMMIT}" \
   org.label-schema.schema-version="1.0"
 
-CMD ["/app", "-port=80"]
+CMD ["/catalogue", "-port=80"]
 EXPOSE 80
