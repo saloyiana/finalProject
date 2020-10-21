@@ -16,7 +16,7 @@ spec:
       description: |
         The build context used by Kaniko
         (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-      default: $(resources.inputs.shipping.path)
+      default: $(resources.inputs.shipping.path)/shipping/
   resources:
     inputs:
       - name: shipping
