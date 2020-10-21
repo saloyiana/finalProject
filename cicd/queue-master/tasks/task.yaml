@@ -16,7 +16,7 @@ spec:
       description: |
         The build context used by Kaniko
         (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-      default: $(resources.inputs.queue-master.path)
+      default: $(resources.inputs.queue-master.path)/queue-master/
   resources:
     inputs:
       - name: queue-master

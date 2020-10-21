@@ -91,8 +91,19 @@ payment-down:
 	kubectl delete -f cicd/payment/tasks/deploy-using-kubectl.yaml -n test 
 	kubectl delete -f cicd/payment/tasks/pipeline/pipeline.yaml -n test
 	kubectl delete -f cicd/payment/tasks/pipeline/pipelinerun.yaml -n test
-
+user:
 shipping:
-queue-master:
+queue-master-install:
+	kubectl apply -f cicd/queue-master/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/task.yaml -n test
+	kubectl apply -f cicd/queue-master/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test
+	kubectl apply -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml -n test
+queue-master-down:
+	kubectl delete -f cicd/queue-master/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/queue-master/tasks/task.yaml -n test
+	kubectl delete -f cicd/queue-master/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl delete -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test
+	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml -n test
 logs:
 	tkn pr logs -f -n test
