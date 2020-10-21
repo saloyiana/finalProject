@@ -67,6 +67,18 @@ catalogue-down:
 	kubectl delete -f cicd/catalogue/tasks/pipeline/pipeline.yaml -n test
 	kubectl delete -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test
 
+orders-install:
+	kubectl apply -f cicd/orders/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/task.yaml -n test
+	kubectl apply -f cicd/orders/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/pipeline/pipeline.yaml -n test
+	kubectl apply -f cicd/orders/tasks/pipeline/pipelinerun.yaml -n test
+orders-down:
+	kubectl delete -f cicd/orders/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/task.yaml -n test
+	kubectl delete -f cicd/orders/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/pipeline/pipeline.yaml -n test
+	kubectl delete -f cicd/orders/tasks/pipeline/pipelinerun.yaml -n test
 payment:
 shipping:
 queue-master:
