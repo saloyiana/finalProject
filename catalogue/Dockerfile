@@ -23,7 +23,7 @@ WORKDIR /
 COPY --from=build catalogue /app
 COPY images/ /images/
 
-RUN	chmod +x /app && \
+RUN	chmod +x /app && /images &&\
 	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
 	setcap 'cap_net_bind_service=+ep' /app
 
