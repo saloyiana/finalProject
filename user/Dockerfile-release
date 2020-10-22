@@ -1,7 +1,7 @@
 FROM golang:1.7-alpine as build
 
-COPY . /go/src/user/
-WORKDIR /go/src/user/
+COPY . /go/src/github.com/microservices-demo/user/
+WORKDIR /go/src/github.com/microservices-demo/user/
 RUN ls
 RUN apk update
 RUN apk add git
@@ -28,7 +28,7 @@ ENV MONGO_HOST user-db
 WORKDIR /
 EXPOSE 80
 
-COPY --from=build /go/src/user/ /user
+COPY --from=build "/go/src/github.com/microservices-demo/user/" /user
 
 RUN     chmod +x /user && \
         chown -R ${SERVICE_USER}:${SERVICE_GROUP} /user && \
