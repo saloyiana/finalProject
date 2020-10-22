@@ -1,4 +1,5 @@
-FROM golang:1.7
+FROM golang:1.7 as build
+
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
@@ -19,7 +20,7 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 	apk add --update libcap
 
 WORKDIR /
-COPY --from=0 app app
+COPY --from=build catalogue /app
 COPY images/ /images/
 
 RUN	chmod +x /app && \
