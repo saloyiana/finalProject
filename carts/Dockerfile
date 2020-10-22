@@ -5,7 +5,9 @@ COPY src /tmp/src
 COPY pom.xml /tmp/
 RUN mvn clean package
 
-FROM adoptopenjdk/openjdk11:alpine
+#FROM adoptopenjdk/openjdk11:alpine
+
+FROM weaveworksdemos/msd-java:jre-latest
 
 COPY --from=build /tmp/target/carts*.jar ./carts.jar
 
@@ -28,4 +30,8 @@ LABEL org.label-schema.vendor="saloyiana" \
   org.label-schema.schema-version="1.0"
 
 ENV JAVA_OPTS "-Djava.security.egd=file:/dev/urandom"
-ENTRYPOINT ["/opt/java/openjdk/bin/java","-jar","./carts.jar", "--port=80"]
+
+#ENTRYPOINT ["/opt/java/openjdk/bin/java","-jar","./carts.jar", "--port=80"]
+
+ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./carts.jar", "--port=80"]
+
