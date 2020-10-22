@@ -34,7 +34,7 @@ RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./queue-master.jar
 
 USER ${SERVICE_USER}
 
-RUN chmod +x ./qqueue-master.jar
+RUN chmod +x ./queue-master.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","./queue-master.jar", "--port=80"]
 
 
