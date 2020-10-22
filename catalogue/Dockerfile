@@ -21,9 +21,9 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 
 WORKDIR /
 COPY --from=build catalogue /app
-COPY images/ /images/
+COPY ./images/ /images
 
-RUN	chmod +x /app && /images &&\
+RUN	chmod +x /app /images &&\
 	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
 	setcap 'cap_net_bind_service=+ep' /app
 
