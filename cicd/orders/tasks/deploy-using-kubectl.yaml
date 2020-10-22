@@ -24,6 +24,6 @@ spec:
        - "-f"
        - "$(resources.inputs.orders.path)/cicd/orders/k8s/svc.yaml"
        - "-f"
-       - "$(resources.inputs.orders.path)/cicd/orders/k8s/order-db.yaml"
+       - "$(resources.inputs.orders.path)/cicd/orders/k8s/order-db-dep.yaml"
        - "-f"
        - "$(resources.inputs.orders.path)/cicd/orders/k8s/order-db-svc.yaml"
