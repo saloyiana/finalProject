@@ -24,8 +24,8 @@ COPY --from=build /go/src/github.com/microservices-demo/catalogue/ /app
 COPY ./images/ /images
 
 RUN	chmod a+rwx app/ images/ &&\
-	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
-	setcap 'cap_net_bind_service=+ep' /app
+	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images
+RUN     setcap 'cap_net_bind_service=+ep' /app
 
 USER ${SERVICE_USER}
 
