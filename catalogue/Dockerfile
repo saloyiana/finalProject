@@ -29,8 +29,8 @@ RUN apk add libcap && setcap 'cap_net_bind_service=+ep' /app
 #RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
 #	setcap 'cap_net_bind_service=+ep' /app
 
-USER ${SERVICE_USER}
-
+#USER ${SERVICE_USER}
+USER 1000
 ARG BUILD_DATE
 ARG BUILD_VERSION
 ARG COMMIT
