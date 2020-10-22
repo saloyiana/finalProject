@@ -34,4 +34,4 @@ ENV JAVA_OPTS "-Djava.security.egd=file:/dev/urandom"
 #ENTRYPOINT ["/opt/java/openjdk/bin/java","-jar","./carts.jar", "--port=80"]
 
 ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./carts.jar", "--port=80"]
-
+EXPOSE 80 
