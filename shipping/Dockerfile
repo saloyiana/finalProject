@@ -6,7 +6,9 @@ copy pom.xml /tmp/
 
 run mvn clean package
 
-from adoptopenjdk/openjdk11:alpine
+#from adoptopenjdk/openjdk11:alpine
+
+FROM weaveworksdemos/msd-java:latest
 
 COPY --from=build /tmp/target/shipping*.jar /shipping.jar
 
@@ -28,4 +30,8 @@ LABEL org.label-schema.vendor="saloyiana" \
   org.label-schema.vcs-ref="${COMMIT}" \
   org.label-schema.schema-version="1.0"
 
-ENTRYPOINT ["/opt/java/openjdk/bin/java","-jar","./shipping.jar", "--port=80"]
+#ENTRYPOINT ["/opt/java/openjdk/bin/java","-jar","./shipping.jar", "--port=80"]
+
+ENV JAVA_OPTS "-Djava.security.egd=file:/dev/urandom"
+
+ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./shipping.jar", "--port=80"]
