@@ -20,7 +20,7 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 	apk add --update libcap
 
 #WORKDIR /
-COPY --from=build catalogue /app
+COPY --from=build /go/src/github.com/microservices-demo/catalogue/ /app
 COPY ./images/ /images
 
 RUN	chmod +x /app /images &&\
