@@ -35,6 +35,6 @@ RUN	chmod +x /user && \
 	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /user && \
 	setcap 'cap_net_bind_service=+ep' /user
 
-USER ${SERVICE_USER}
+#USER ${SERVICE_USER}
 
 CMD ["/user", "-port=80"]
