@@ -10,13 +10,13 @@ spec:
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.payment.path)/payment/docker/payment/Dockerfile
+      default: $(resources.inputs.payment.path)/payment/Docker-release
     - name: pathToContext
       type: string
       description: |
         The build context used by Kaniko
         (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-      default: $(resources.inputs.payment.path)
+      default: $(resources.inputs.payment.path)/payment/
   resources:
     inputs:
       - name: payment

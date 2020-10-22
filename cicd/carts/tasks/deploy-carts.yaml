@@ -8,7 +8,7 @@ spec:
     - name: pathToYamlFile
       type: string
       description: The path to the yaml file to deploy within the git source
-      default: $(resources.inputs.carts-resource.path)cicd/carts/k8s/deploy.yaml
+      default: $(resources.inputs.carts.path)/cicd/carts/k8s/deploy.yaml
   resources:
     inputs:
       - name: carts
@@ -22,4 +22,8 @@ spec:
        - "-f"
        - "$(params.pathToYamlFile)"
        - "-f"
-       - "$(resources.inputs.carts-resource.path)/cicd/carts/k8s/svc.yaml"
+       - "$(resources.inputs.carts.path)/cicd/carts/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/carts/k8s/carts-db-dep.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/carts/k8s/carts-db-svc.yaml"

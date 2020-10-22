@@ -8,7 +8,7 @@ spec:
     - name: pathToYamlFile
       type: string
       description: The path to the yaml file to deploy within the git source
-      default: $(resources.inputs.catalogue.path)cicd/catalogue/k8s/deploy.yaml
+      default: $(resources.inputs.catalogue.path)/cicd/catalogue/k8s/deploy.yaml
   resources:
     inputs:
       - name: catalogue

@@ -9,4 +9,4 @@ spec:
   resources:
     - name: source
       resourceRef:
-        name: orders-resource
+        name: orders

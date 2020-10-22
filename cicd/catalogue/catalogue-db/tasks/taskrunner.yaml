@@ -13,4 +13,4 @@ spec:
     inputs:
     - name: docker-source
       resourceRef:
-        name: catalogue-db
+        name: catalogue

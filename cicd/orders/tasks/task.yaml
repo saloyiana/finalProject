@@ -16,7 +16,7 @@ spec:
       description: |
         The build context used by Kaniko
         (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-      default: $(resources.inputs.orders.path)
+      default: $(resources.inputs.orders.path)/orders/
   resources:
     inputs:
       - name: orders

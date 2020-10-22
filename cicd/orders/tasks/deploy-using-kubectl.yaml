@@ -11,7 +11,7 @@ spec:
       default: $(resources.inputs.orders.path)/cicd/orders/k8s/deploy.yaml
   resources:
     inputs:
-      - name: orders-resource
+      - name: orders
         type: git
   steps:
    - name: run-kubectl

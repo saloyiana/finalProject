@@ -12,7 +12,7 @@ spec:
         name: build-docker-image-from-git-source-carts
       resources:
         inputs: 
-        - name: carts-resource
+        - name: carts
           resource: source
     - name: deploy-using-kubectl
       runAfter: ["build"]
@@ -20,5 +20,5 @@ spec:
         name: carts-deploy-using-kubectl
       resources:
         inputs:
-        - name: carts-resource
+        - name: carts
           resource: source

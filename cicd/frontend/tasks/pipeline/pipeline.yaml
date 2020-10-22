@@ -17,7 +17,7 @@ spec:
     - name: frontend-deploy-using-kubectl
       runAfter: ["build"]
       taskRef:
-        name: deploy-using-kubectl
+        name: frontend-deploy-using-kubectl
       resources:
         inputs:
         - name: frontend-resource
