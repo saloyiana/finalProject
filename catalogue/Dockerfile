@@ -24,8 +24,8 @@ COPY images/ /images/
 
 
 RUN	chmod a+rwx /app /images
-
-RUN apk add libcap && setcap 'cap_net_bind_service=+ep' /app
+RUN apk add --update libcap
+RUN setcap 'cap_net_bind_service=+ep' /app
 #RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
 #	setcap 'cap_net_bind_service=+ep' /app
 
@@ -45,5 +45,5 @@ LABEL org.label-schema.vendor="saloyiana" \
   org.label-schema.vcs-ref="${COMMIT}" \
   org.label-schema.schema-version="1.0"
 
-CMD ["/app/main", "-port=80"]
+CMD ["/app", "-port=80"]
 EXPOSE 80
