@@ -23,9 +23,9 @@ ENV HATEAOS user
 ENV USER_DATABASE mongodb
 ENV MONGO_HOST user-db
 
-WORKDIR /
-EXPOSE 80
-COPY --from=0 /user /
+#WORKDIR /
+#EXPOSE 80
+COPY --from=build /go/src/github.com/microservices-demo/user/ /user
 
 RUN     chmod +x /user && \
         chown -R ${SERVICE_USER}:${SERVICE_GROUP} /user && \
