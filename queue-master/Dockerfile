@@ -13,9 +13,9 @@ RUN mvn clean package
 #FROM java:openjdk-8-alpine
 FROM weaveworksdemos/msd-java:latest
 
-ENV	SERVICE_USER=myuser \
+ENV	SERVICE_USER=queue-master \
 	SERVICE_UID=10001 \
-	SERVICE_GROUP=mygroup \
+	SERVICE_GROUP=queue-master \
 	SERVICE_GID=10001
 
 COPY --from=build /tmp/target/queue-master.jar /queue-master.jar
