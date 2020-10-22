@@ -23,9 +23,9 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 COPY --from=build /go/src/github.com/microservices-demo/catalogue/ /app
 COPY ./images/ /images
 
-RUN	chmod a+rwx app/ images/ &&\
-	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images
-RUN     setcap 'cap_net_bind_service=+ep' /app
+RUN	chmod a+rwx app/catalogue images/ &&\
+	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app/catalogue /images
+RUN     setcap 'cap_net_bind_service=+ep' /app/catalogue
 
 USER ${SERVICE_USER}
 
