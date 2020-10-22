@@ -1,7 +1,8 @@
 #FIRST STEP:
 
-.PHONY:
+.PHONY: cluster namespaces tekton cli
 up: cluster namespaces tekton cli install-ingress main frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
+
 cluster:
 	k3d cluster create sockShop \
 	    -p 80:80@loadbalancer \
@@ -12,6 +13,13 @@ cluster:
 	    -v /var/run/docker.sock:/var/run/docker.sock \
 	    --k3s-server-arg '--no-deploy=traefik' \
 	    --agents 3
+cluster-down:
+	k3d cluster delete sockShop
+
+clean: frontend-down shipping-down cart-down payment-down queue-master-down catalogue-down user-down orders-down 
+
+down: clean cluster-down
+
 tekton:
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml
