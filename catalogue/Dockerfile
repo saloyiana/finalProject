@@ -42,5 +42,5 @@ LABEL org.label-schema.vendor="saloyiana" \
   org.label-schema.vcs-ref="${COMMIT}" \
   org.label-schema.schema-version="1.0"
 
-CMD ["/app", "-port=80"]
+CMD ["/app/main", "-port=80"]
 EXPOSE 80
