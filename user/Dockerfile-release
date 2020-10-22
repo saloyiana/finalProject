@@ -31,7 +31,7 @@ COPY --from=build /go/src/github.com/microservices-demo/user/ /user
 
 RUN     chmod +x /user && \
         chown -R ${SERVICE_USER}:${SERVICE_GROUP} /user && \
-        setcap 'cap_net_bind_service=+ep' /user
+        setcap 'cap_net_bind_service=+ep' ./user
 
 USER ${SERVICE_USER}
 CMD ["/user", "-port=80"]
