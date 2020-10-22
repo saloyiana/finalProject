@@ -10,7 +10,8 @@ RUN mvn clean package
 
 #FROM adoptopenjdk/openjdk11:alpine
 
-FROM java:openjdk-8-alpine
+#FROM java:openjdk-8-alpine
+FROM weaveworksdemos/msd-java:latest
 
 ENV	SERVICE_USER=myuser \
 	SERVICE_UID=10001 \
@@ -35,6 +36,8 @@ RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./queue-master.jar
 USER ${SERVICE_USER}
 
 RUN chmod +x ./queue-master.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","./queue-master.jar", "--port=80"]
+#ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","./queue-master.jar", "--port=80"]
 
+ENV JAVA_OPTS "-Djava.security.egd=file:/dev/urandom"
+ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./queue-master.jar", "--port=80"]
 
