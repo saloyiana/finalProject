@@ -15,13 +15,6 @@ spec:
       containers:
       - name: front-end
         image: saloyiana/frontend
-        resources:
-          limits:
-            cpu: 300m
-            memory: 1000Mi
-          requests:
-            cpu: 100m
-            memory: 300Mi
         ports:
         - containerPort: 8079
         env:
@@ -34,17 +27,5 @@ spec:
             drop:
               - all
           readOnlyRootFilesystem: true
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8079
-          initialDelaySeconds: 300
-          periodSeconds: 3
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8079
-          initialDelaySeconds: 30
-          periodSeconds: 3
       nodeSelector:
         beta.kubernetes.io/os: linux
