@@ -29,7 +29,7 @@ ENV MONGO_HOST user-db
 
 #WORKDIR /
 EXPOSE 80
-COPY --from=0 /go/src/github.com/microservices-demo/user/ /user
+COPY --from=0 /user /
 RUN ls
 WORKDIR /
 RUN ls
