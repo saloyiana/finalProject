@@ -19,7 +19,5 @@ spec:
         image: saloyiana/catalogue
         ports:
         - containerPort: 80
-        securityContext:
-          privileged: true
       nodeSelector:
         beta.kubernetes.io/os: linux
