@@ -17,16 +17,7 @@ spec:
       containers:
       - name: payment
         image: saloyiana/payment
-        resources:
-          limits:
-            cpu: 100m
-            memory: 100Mi
-          requests:
-            cpu: 99m
-            memory: 100Mi
         ports:
         - containerPort: 80
-        securityContext:
-          privileged: true
       nodeSelector:
         beta.kubernetes.io/os: linux
