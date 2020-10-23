@@ -29,9 +29,9 @@ ENV MONGO_HOST user-db
 
 #WORKDIR /
 EXPOSE 80
-COPY --from=0 /go/src/github.com/microservices-demo/user /user
+COPY --from=0 /go/src/github.com/microservices-demo/user/ /user
 RUN ls
-WORKDIR /user
+WORKDIR /
 RUN ls
 RUN	chmod +x /user && \
 	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /user && \
