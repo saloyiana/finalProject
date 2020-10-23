@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: mongo
+        - name: MONGO_HOST
           value: user-db:27017
       nodeSelector:
         beta.kubernetes.io/os: linux
