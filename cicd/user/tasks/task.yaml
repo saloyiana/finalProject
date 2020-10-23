@@ -10,7 +10,7 @@ spec:
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.user.path)/user/Dockerfile-release
+      default: $(resources.inputs.user.path)/user/Dockerfile-try
     - name: pathToContext
       type: string
       description: |
