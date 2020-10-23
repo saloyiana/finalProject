@@ -8,9 +8,6 @@ COPY pom.xml /tmp/
 
 RUN mvn clean package
 
-#FROM adoptopenjdk/openjdk11:alpine
-
-#FROM java:openjdk-8-alpine
 FROM java:openjdk-8-alpine
 
 ENV     SERVICE_USER=myuser \
@@ -35,4 +32,3 @@ RUN     chown -R ${SERVICE_USER}:${SERVICE_GROUP} ./queue-master.jar
 USER ${SERVICE_USER}
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","./queue-master.jar", "--port=80"]
-
