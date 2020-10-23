@@ -20,6 +20,8 @@ clean: frontend-down shipping-down cart-down payment-down queue-master-down cata
 
 down: clean cluster-down
 
+microservices-up: frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install
+
 tekton:
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 	kubectl apply -f https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml
