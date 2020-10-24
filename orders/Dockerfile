@@ -16,13 +16,13 @@ RUN mvn clean package
 
 FROM weaveworksdemos/msd-java:latest
 
-COPY --from=build /tmp/target/orders.jar /app.jar
+COPY --from=build /tmp/target/orders.jar /orders.jar
 #WORKDIR /usr/src/app
 #COPY *.jar ./app.jar
 
-RUN chmod +x ./app.jar
-
+RUN chmod +x ./orders.jar
+EXPOSE 80
 #USER ${SERVICE_USER}
 
 ENV JAVA_OPTS "-Djava.security.egd=file:/dev/urandom"
-ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./app.jar", "--port=80"]
+ENTRYPOINT ["/usr/local/bin/java.sh","-jar","./orders.jar", "--port=80"]
