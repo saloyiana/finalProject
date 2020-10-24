@@ -8,11 +8,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: order-db
+      name: orders-db
   template:
     metadata:
       labels:
-        name: order-db
+        name: orders-db
     spec:
       containers:
       - name: orders-db
