@@ -48,108 +48,108 @@ delete-ingress:
 main:
 	kubectl apply -f cicd/main/sa.yaml -f cicd/main/role.yaml -n test
 frontend:
-	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/frontend/tasks/task.yaml -n test
-	kubectl apply -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test 
+	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml
+	kubectl apply -f cicd/frontend/tasks/task.yaml
+	kubectl apply -f cicd/frontend/tasks/deploy-using-kubectl.yaml
+	kubectl apply -f cicd/frontend/tasks/pipeline/pipeline.yaml
+	kubectl apply -f cicd/frontend/tasks/pipeline/pipelinerun.yaml
 frontend-down:
-	kubectl delete -f cicd/frontend/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/frontend/tasks/task.yaml -n test
-	kubectl delete -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl delete -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test 
+	kubectl delete -f cicd/frontend/tasks/pipelineResource.yaml
+	kubectl delete -f cicd/frontend/tasks/task.yaml
+	kubectl delete -f cicd/frontend/tasks/deploy-using-kubectl.yaml
+	kubectl delete -f cicd/frontend/tasks/pipeline/pipeline.yaml
+	kubectl delete -f cicd/frontend/tasks/pipeline/pipelinerun.yaml
 cart-install:
-	kubectl apply -f cicd/carts/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/carts/tasks/task.yaml -n test
-	kubectl apply -f cicd/carts/tasks/deploy-carts.yaml -n test 
-	kubectl apply -f cicd/carts/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/carts/tasks/pipeline/pipelinerun.yaml -n test 
+	kubectl apply -f cicd/carts/tasks/pipelineResource.yaml 
+	kubectl apply -f cicd/carts/tasks/task.yaml
+	kubectl apply -f cicd/carts/tasks/deploy-carts.yaml
+	kubectl apply -f cicd/carts/tasks/pipeline/pipeline.yaml
+	kubectl apply -f cicd/carts/tasks/pipeline/pipelinerun.yaml
 cart-down:
-	kubectl delete -f cicd/carts/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/carts/tasks/task.yaml -n test
-	kubectl delete -f cicd/carts/tasks/deploy-carts.yaml -n test 
-	kubectl delete -f cicd/carts/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/carts/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl delete -f cicd/carts/tasks/pipelineResource.yaml
+	kubectl delete -f cicd/carts/tasks/task.yaml
+	kubectl delete -f cicd/carts/tasks/deploy-carts.yaml
+	kubectl delete -f cicd/carts/tasks/pipeline/pipeline.yaml
+	kubectl delete -f cicd/carts/tasks/pipeline/pipelinerun.yaml
 catalogue-install:
-	kubectl apply -f cicd/catalogue/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/catalogue/tasks/task.yaml -n test
-	kubectl apply -f cicd/catalogue/catalogue-db/tasks/task.yaml -n test
-	kubectl apply -f cicd/catalogue/tasks/deploy-catalogue.yaml -n test 
-	kubectl apply -f cicd/catalogue/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl apply -f cicd/catalogue/tasks/pipelineResource.yaml
+	kubectl apply -f cicd/catalogue/tasks/task.yaml
+	kubectl apply -f cicd/catalogue/catalogue-db/tasks/task.yaml 
+	kubectl apply -f cicd/catalogue/tasks/deploy-catalogue.yaml
+	kubectl apply -f cicd/catalogue/tasks/pipeline/pipeline.yaml
+	kubectl apply -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml
 catalogue-down:
-	kubectl delete -f cicd/catalogue/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/catalogue/tasks/task.yaml -n test
-	kubectl delete -f cicd/catalogue/catalogue-db/tasks/task.yaml -n test
-	kubectl delete -f cicd/catalogue/tasks/deploy-catalogue.yaml -n test 
-	kubectl delete -f cicd/catalogue/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl delete -f cicd/catalogue/tasks/pipelineResource.yaml 
+	kubectl delete -f cicd/catalogue/tasks/task.yaml 
+	kubectl delete -f cicd/catalogue/catalogue-db/tasks/task.yaml 
+	kubectl delete -f cicd/catalogue/tasks/deploy-catalogue.yaml 
+	kubectl delete -f cicd/catalogue/tasks/pipeline/pipeline.yaml 
+	kubectl delete -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml 
 
 orders-install:
-	kubectl apply -f cicd/orders/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/orders/tasks/task.yaml -n test
-	kubectl apply -f cicd/orders/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/orders/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/orders/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl apply -f cicd/orders/tasks/pipelineResource.yaml
+	kubectl apply -f cicd/orders/tasks/task.yaml
+	kubectl apply -f cicd/orders/tasks/deploy-using-kubectl.yaml 
+	kubectl apply -f cicd/orders/tasks/pipeline/pipeline.yaml 
+	kubectl apply -f cicd/orders/tasks/pipeline/pipelinerun.yaml 
 orders-down:
-	kubectl delete -f cicd/orders/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/orders/tasks/task.yaml -n test
-	kubectl delete -f cicd/orders/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl delete -f cicd/orders/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/orders/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl delete -f cicd/orders/tasks/pipelineResource.yaml 
+	kubectl delete -f cicd/orders/tasks/task.yaml 
+	kubectl delete -f cicd/orders/tasks/deploy-using-kubectl.yaml 
+	kubectl delete -f cicd/orders/tasks/pipeline/pipeline.yaml 
+	kubectl delete -f cicd/orders/tasks/pipeline/pipelinerun.yaml 
 payment-install:
-	kubectl apply -f cicd/payment/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/payment/tasks/task.yaml -n test
-	kubectl apply -f cicd/payment/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/payment/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/payment/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl apply -f cicd/payment/tasks/pipelineResource.yaml 
+	kubectl apply -f cicd/payment/tasks/task.yaml 
+	kubectl apply -f cicd/payment/tasks/deploy-using-kubectl.yaml  
+	kubectl apply -f cicd/payment/tasks/pipeline/pipeline.yaml 
+	kubectl apply -f cicd/payment/tasks/pipeline/pipelinerun.yaml 
 payment-down:
-	kubectl delete -f cicd/payment/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/payment/tasks/task.yaml -n test
-	kubectl delete -f cicd/payment/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl delete -f cicd/payment/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/payment/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl delete -f cicd/payment/tasks/pipelineResource.yaml 
+	kubectl delete -f cicd/payment/tasks/task.yaml 
+	kubectl delete -f cicd/payment/tasks/deploy-using-kubectl.yaml 
+	kubectl delete -f cicd/payment/tasks/pipeline/pipeline.yaml 
+	kubectl delete -f cicd/payment/tasks/pipeline/pipelinerun.yaml 
 user-install:
-	kubectl apply -f cicd/user/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/user/tasks/task.yaml -n test
-	kubectl apply -f cicd/user/user-db/tasks/task.yaml -n test
-	kubectl apply -f cicd/user/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/user/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/user/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl apply -f cicd/user/tasks/pipelineResource.yaml
+	kubectl apply -f cicd/user/tasks/task.yaml 
+	kubectl apply -f cicd/user/user-db/tasks/task.yaml
+	kubectl apply -f cicd/user/tasks/deploy-using-kubectl.yaml  
+	kubectl apply -f cicd/user/tasks/pipeline/pipeline.yaml 
+	kubectl apply -f cicd/user/tasks/pipeline/pipelinerun.yaml 
 
 user-down:
-	kubectl delete -f cicd/user/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/user/tasks/task.yaml -n test
-	kubectl delete -f cicd/user/user-db/tasks/task.yaml -n test
-	kubectl delete -f cicd/user/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl delete -f cicd/user/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/user/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl delete -f cicd/user/tasks/pipelineResource.yaml 
+	kubectl delete -f cicd/user/tasks/task.yaml 
+	kubectl delete -f cicd/user/user-db/tasks/task.yaml 
+	kubectl delete -f cicd/user/tasks/deploy-using-kubectl.yaml 
+	kubectl delete -f cicd/user/tasks/pipeline/pipeline.yaml 
+	kubectl delete -f cicd/user/tasks/pipeline/pipelinerun.yaml 
 
 shipping-install:
-	kubectl apply -f cicd/shipping/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/shipping/tasks/task.yaml -n test
-	kubectl apply -f cicd/shipping/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/shipping/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/shipping/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl apply -f cicd/shipping/tasks/pipelineResource.yaml 
+	kubectl apply -f cicd/shipping/tasks/task.yaml 
+	kubectl apply -f cicd/shipping/tasks/deploy-using-kubectl.yaml 
+	kubectl apply -f cicd/shipping/tasks/pipeline/pipeline.yaml 
+	kubectl apply -f cicd/shipping/tasks/pipeline/pipelinerun.yaml 
 shipping-down:
-	kubectl delete -f cicd/shipping/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/shipping/tasks/task.yaml -n test
-	kubectl delete -f cicd/shipping/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl delete -f cicd/shipping/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/shipping/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl delete -f cicd/shipping/tasks/pipelineResource.yaml 
+	kubectl delete -f cicd/shipping/tasks/task.yaml 
+	kubectl delete -f cicd/shipping/tasks/deploy-using-kubectl.yaml
+	kubectl delete -f cicd/shipping/tasks/pipeline/pipeline.yaml 
+	kubectl delete -f cicd/shipping/tasks/pipeline/pipelinerun.yaml
 queue-master-install:
-	kubectl apply -f cicd/queue-master/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/queue-master/tasks/task.yaml -n test
-	kubectl apply -f cicd/queue-master/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test
-	kubectl apply -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl apply -f cicd/queue-master/tasks/pipelineResource.yaml
+	kubectl apply -f cicd/queue-master/tasks/task.yaml 
+	kubectl apply -f cicd/queue-master/tasks/deploy-using-kubectl.yaml 
+	kubectl apply -f cicd/queue-master/tasks/pipeline/pipeline.yaml 
+	kubectl apply -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml
 queue-master-down:
-	kubectl delete -f cicd/queue-master/tasks/pipelineResource.yaml -n test 
-	kubectl delete -f cicd/queue-master/tasks/task.yaml -n test
-	kubectl delete -f cicd/queue-master/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl delete -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test
-	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml -n test
+	kubectl delete -f cicd/queue-master/tasks/pipelineResource.yaml 
+	kubectl delete -f cicd/queue-master/tasks/task.yaml 
+	kubectl delete -f cicd/queue-master/tasks/deploy-using-kubectl.yaml 
+	kubectl delete -f cicd/queue-master/tasks/pipeline/pipeline.yaml 
+	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml
 
 logs:
-	tkn pr logs -f -n test
+	tkn pr logs -f

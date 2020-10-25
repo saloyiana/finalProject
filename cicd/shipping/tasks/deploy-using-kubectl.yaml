@@ -25,3 +25,5 @@ spec:
        - "$(resources.inputs.shipping.path)/cicd/shipping/k8s/svc.yaml"
        - "-f"
        - "$(resources.inputs.shipping.path)/cicd/shipping/k8s/rabbitmq.yaml"
+       - "-n"
+       - "test"

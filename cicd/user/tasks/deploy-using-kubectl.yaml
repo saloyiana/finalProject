@@ -27,3 +27,5 @@ spec:
        - "$(resources.inputs.user.path)/cicd/user/user-db/k8s/deploy.yaml"
        - "-f"
        - "$(resources.inputs.user.path)/cicd/user/user-db/k8s/svc.yaml"
+       - "-n"
+       - "test"

@@ -23,3 +23,5 @@ spec:
        - "$(params.pathToYamlFile)"
        - "-f"
        - "$(resources.inputs.queue-master.path)/cicd/queue-master/k8s/svc.yaml"
+       - "-n"
+       - "test"

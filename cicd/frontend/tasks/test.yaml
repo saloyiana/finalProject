@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: e2e-js-test
+spec:
+  parallelism: 1
+  completions: 1
+  backoffLimit: 3
+  activeDeadlineSeconds: 20
+template:
+  metadata:
+    labels:
+      app: "e2e-js-test"
+      run: "1"
+      version: "1"
+  spec:
+    restartPolicy: Never
+    containers:
+    - name: tester
+      image: saloyiana/e2ejstest:latest

@@ -27,3 +27,5 @@ spec:
        - "$(resources.inputs.catalogue.path)/cicd/catalogue/catalogue-db/k8s/catalogue-db-dep.yaml"
        - "-f"
        - "$(resources.inputs.catalogue.path)/cicd/catalogue/catalogue-db/k8s/catalogue-db-svc.yaml"
+       - "-n"
+       - "test"

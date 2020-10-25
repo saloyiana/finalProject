@@ -27,3 +27,5 @@ spec:
        - "$(resources.inputs.carts.path)/cicd/carts/k8s/carts-db-dep.yaml"
        - "-f"
        - "$(resources.inputs.carts.path)/cicd/carts/k8s/carts-db-svc.yaml"
+       - "-n"
+       - "test"

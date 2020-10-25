@@ -27,3 +27,5 @@ spec:
        - "$(resources.inputs.orders.path)/cicd/orders/k8s/order-db-dep.yaml"
        - "-f"
        - "$(resources.inputs.orders.path)/cicd/orders/k8s/order-db-svc.yaml"
+       - "-n"
+       - "test"
