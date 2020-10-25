@@ -3,8 +3,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: pipeline-role
 rules:
-- apiGroups: ["serving.knative.dev", "apps", "", "extensions"]
-  resources: ["services", "deployments", "deployments.apps", "replicasets", "pods"]
+- apiGroups: ["serving.knative.dev", "apps", "", "extensions", "batches"]
+  resources: ["services", "deployments", "deployments.apps", "replicasets", "pods", "jobs"]
   verbs: ["get", "create", "update", "patch"]
 
 ---
