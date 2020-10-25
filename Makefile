@@ -46,7 +46,7 @@ delete-ingress:
 	kubectl delete -n ingress -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml | tee -a output.log 2>/dev/null | true
 
 main:
-	kubectl apply -f cicd/frontend/tasks/main/sa.yaml -f cicd/frontend/tasks/main/role.yaml -n test
+	kubectl apply -f cicd/main/sa.yaml -f cicd/main/role.yaml -n test
 frontend:
 	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml -n test 
 	kubectl apply -f cicd/frontend/tasks/task.yaml -n test
