@@ -11,7 +11,7 @@ spec:
   steps:
    - name: run-test
      workingDir: /workspace/frontend-resource/test/e2e-js-test/
-     image: node:alpine
+     image: ubuntu
      command: 
-     - ./runner.sh
-
+     - chmod +x runner.sh
+     - sh runner.sh
