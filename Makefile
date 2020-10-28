@@ -1,7 +1,7 @@
 #FIRST STEP:
 
 .PHONY: cluster namespaces tekton cli
-up: cluster namespaces tekton cli install-ingress main-test main-prod frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
+up: cluster namespaces tekton cli install-ingress main frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
 
 cluster:
 	k3d cluster create sockShop \
@@ -45,11 +45,9 @@ delete-ingress:
 	echo "Ingress: delete" | tee -a output.log
 	kubectl delete -n ingress -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml | tee -a output.log 2>/dev/null | true
 
-main-test:
-	kubectl apply -f cicd/main/sa.yaml -f cicd/main/role.yaml -n test
+main:
+	kubectl apply -f cicd/main/sa.yaml -f cicd/main/role.yaml
 
-main-prod:
-	kubectl apply -f cicd/main/sa-prod.yaml -f cicd/main/role-sa.yaml -n prod
 frontend:
 	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml
 	kubectl apply -f cicd/frontend/tasks/task.yaml

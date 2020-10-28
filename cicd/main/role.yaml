@@ -1,22 +1,38 @@
-kind: Role
+kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: pipeline-role
 rules:
-- apiGroups: ["serving.knative.dev", "apps", "", "extensions", "batches"]
-  resources: ["services", "deployments", "deployments.apps", "replicasets", "pods", "jobs"]
-  verbs: ["get", "create", "update", "patch"]
+- apiGroups: ["serving.knative.dev", "apps", "", "extensions", "batch"]
+  resources: ["services", "deployments", "deployments.apps", "replicasets", "pods", "jobs", "ingresses"]
+  verbs: ["get", "create", "update", "patch", "list"]
 
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: pipeline-role-binding
+  name: pipeline-role-binding-test
+  namespace: test
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: pipeline-role
 subjects:
 - kind: ServiceAccount
   name: build-bot
+  namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pipeline-role-binding-prod
+  namespace: prod
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pipeline-role
+subjects:
+- kind: ServiceAccount
+  name: build-bot
+  namespace: default
+
