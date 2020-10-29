@@ -36,6 +36,8 @@ namespaces:
 	kubectl create namespace test
 	kubectl create namespace prod
 	kubectl create namespace ingress-nginx
+	kubectl create namespace elk
+	kubectl create namespace grafana
 install-ingress:
 	echo "Ingress: install" | tee -a output.log
 	kubectl apply -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml | tee -a output.log
@@ -44,6 +46,16 @@ install-ingress:
 delete-ingress:
 	echo "Ingress: delete" | tee -a output.log
 	kubectl delete -n ingress -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml | tee -a output.log 2>/dev/null | true
+
+elk:
+	helm repo add elastic https://helm.elastic.co
+	helm repo add fluent https://fluent.github.io/helm-charts
+	helm repo update
+	helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=elk
+	helm install fluent-bit fluent/fluent-bit --namespace=elk
+	helm install kibana elastic/kibana --version=7.9.0 --namespace=elk --set service.type=NodePort
+	kubectl apply -f ELK/ingress.yaml -n elk
+
 
 main:
 	kubectl apply -f cicd/main/sa.yaml -f cicd/main/role.yaml
