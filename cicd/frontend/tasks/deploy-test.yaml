@@ -26,6 +26,8 @@ spec:
      image: node:alpine
      script: |
        #!/usr/bin/env sh
+       apk add --update --no-cache make git curl jq python3 && ln -sf python3 /usr/bin/python
+       python3 -m ensurepip
        npm install -g casperjs mocha jscodeshift
        chmod +x runner.sh
        sh runner.sh
