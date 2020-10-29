@@ -33,7 +33,7 @@ spec:
     - name: deploy-to-prod
       runAfter: ["run-test-1"]
       taskRef:
-        name: frontend-deploy-using-kubectl
+        name: frontend-deploy-using-kubectl-prod
       resources:
         inputs:
         - name: frontend-resource 

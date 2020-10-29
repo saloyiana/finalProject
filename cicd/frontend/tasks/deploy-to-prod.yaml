@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: frontend-deploy-using-kubectl
+  name: frontend-deploy-using-kubectl-prod
   serviceAccountName: build-bot
 spec:
   params:

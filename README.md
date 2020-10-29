@@ -1,3 +1,3 @@
 # The Final Project of the DevOps Bootcamp
 
-## The main tools:  
+This project done as one of the requirement to complete the bootcamp. 
