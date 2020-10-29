@@ -4,7 +4,7 @@
 
   casper.test.begin("User interacts with the cart", 1, function(test) {
     // initial load and login
-    casper.start("http://front-end:30001/", function() {
+    casper.start("http://front-end:8079/", function() {
       this.clickLabel("Login");
       this.fill("#login-modal form", {
         "username": "Eve_Berger",
@@ -30,7 +30,7 @@
         test.fail("Catalogue items did not show up");
       }, 3000)
 
-      this.waitForText("1 item(s) in cart", function() {
+      this.waitForText("2 item(s) in cart", function() {
         test.pass("cart gets updated with user selection");
       }, function() {
         test.fail("cart was not updated");
