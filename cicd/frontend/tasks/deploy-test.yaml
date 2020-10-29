@@ -18,6 +18,8 @@ spec:
      image: ubuntu
      command:
      - ls
+     - cd frontend-resource/
+     - ls
    - name: run-test
      image: ubuntu
      command: 
