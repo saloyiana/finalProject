@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: app-ingress
+  name: socks-ingress
   annotations:
-    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - http:
@@ -12,3 +12,4 @@ spec:
         backend:
           serviceName: front-end
           servicePort: 8079
+

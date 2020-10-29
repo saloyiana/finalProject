@@ -14,23 +14,14 @@ spec:
       - name: frontend-resource
         type: git
   steps:
-   - name: debug
-     workingDir: /workspace/frontend-resource/test/e2e-js-test/
-     image: ubuntu
-     script: | 
-       #!/usr/bin/env bash
-       pwd 
-       ls -gAhF
+    - name: run-test
+      workingDir: /workspace/frontend-resource/test/e2e-js-test/
+      image: saloyiana/e2e-test-js
+      script: |
+        #!/bin/sh
+        rm -rf node_modules package-lock.json
+        npm init -y
+        npm install --save chrome-remote-interface chrome-launcher mocha express request body-parser sinon chai chai-http http
+        source /workspace/frontend-resource/test/e2e-js-test/runner.sh
 
-   - name: run-test
-     workingDir: /workspace/frontend-resource/test/e2e-js-test/
-     image: node:alpine
-     script: |
-       #!/usr/bin/env sh
-       apk add --update --no-cache make git curl jq python3 && ln -sf python3 /usr/bin/python
-       python3 -m ensurepip
-       pip3 install --no-cache --upgrade pip setuptools
-       npm install -g casperjs mocha phantomjs
-       npm install -g jscodeshift
-       sh runner.sh
 

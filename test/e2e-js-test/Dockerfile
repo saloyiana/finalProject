@@ -6,7 +6,7 @@ RUN apk add --update --no-cache make git curl jq python3 && \
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
 
-RUN npm install -g casperjs mocha jscodeshift
+RUN npm install -g casperjs mocha jscodeshift 
 
 WORKDIR /tmp
 RUN curl -Ls https://github.com/dustinblackman/phantomized/releases/download/2.1.1/dockerized-phantomjs.tar.gz | tar xz &&\
@@ -16,4 +16,6 @@ RUN curl -Ls https://github.com/dustinblackman/phantomized/releases/download/2.1
   cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs &&\
   rm -rf /tmp/*
 
-
+WORKDIR /e2e-test
+COPY . /e2e-test
+RUN npm install
