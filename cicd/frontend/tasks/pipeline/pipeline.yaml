@@ -22,7 +22,7 @@ spec:
         inputs:
         - name: frontend-resource
           resource: source
-    - name: run-test-1
+    - name: run-test
       runAfter: ["frontend-deploy-using-kubectl"]
       taskRef:
         name: test-deploy
@@ -31,7 +31,7 @@ spec:
         - name: frontend-resource
           resource: source
     - name: deploy-to-prod
-      runAfter: ["run-test-1"]
+      runAfter: ["run-test"]
       taskRef:
         name: frontend-deploy-using-kubectl-prod
       resources:
