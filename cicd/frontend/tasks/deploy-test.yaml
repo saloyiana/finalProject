@@ -17,10 +17,10 @@ spec:
    - name: debug
      workingDir: /workspace/frontend-resource/test/e2e-js-test/
      image: ubuntu
-      script: | 
-        #!/usr/bin/env bash
-        pwd 
-        ls -gAhF
+     script: | 
+       #!/usr/bin/env bash
+       pwd 
+       ls -gAhF
    - name: run-test
      image: ubuntu
      command: 
