@@ -14,6 +14,10 @@ spec:
       - name: frontend-resource
         type: git
   steps:
+   - name: debug
+     image: ubuntu
+     command:
+     - ls
    - name: run-test
      image: ubuntu
      command: 
