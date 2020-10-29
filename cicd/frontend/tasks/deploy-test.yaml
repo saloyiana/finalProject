@@ -5,21 +5,25 @@ metadata:
   serviceAccountName: build-bot
 spec:
   params:
-    - name: pathToSh
+    - name: pathToYamlFile
       type: string
       description: The path to the yaml file to deploy within the git source
-      default: $(resources.inputs.frontend-resource.path)/test/e2e-js-test/runner.sh
+      default: $(resources.inputs.frontend-resource.path)/cicd/frontend/k8s/test.yaml
   resources:
     inputs:
       - name: frontend-resource
         type: git
   steps:
-    - name: run-test
-      workingDir: /workspace/frontend-resource/test/e2e-js-test/
-      image: saloyiana/e2e-test-js
-      script: |
-        #!/bin/sh
-        chmod +x runner.sh
-        source runner.sh
-
-
+   - name: run-kubectl
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(params.pathToYamlFile)"
+       - "-n"
+       - "test"
+   - name: run-wait
+    image: lachlanevenson/k8s-kubectl
+    script: |
+     kubectl wait --for=condition=complete job/test -n test

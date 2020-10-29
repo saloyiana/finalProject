@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test
+spec:
+  parallelism: 1
+  backoffLimit: 9
+#  activeDeadlineSeconds: 200
+  template:
+    spec:
+      containers:
+      - name: test
+        image: saloyiana/e2e-test-js
+        command: ["casperjs"]
+        args: ["test","cart_test.js", "checkout_test.js" ,"catalogue_test.js", "login_test.js" ,"homepage_test.js"]
+      restartPolicy: Never
