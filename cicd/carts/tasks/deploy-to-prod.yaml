@@ -1,0 +1,127 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: carts-deploy-using-kubectl-prod
+  serviceAccountName: build-bot
+spec:
+  params:
+    - name: pathToYamlFile
+      type: string
+      description: The path to the yaml file to deploy within the git source
+      default: $(resources.inputs.carts.path)/cicd/carts/k8s/deploy.yaml
+  resources:
+    inputs:
+      - name: carts
+        type: git
+  steps:
+   - name: run-kubectl
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(params.pathToYamlFile)"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/carts/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/carts/k8s/carts-db-dep.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/carts/k8s/carts-db-svc.yaml"
+       - "-n"
+       - "prod"
+   - name: deploy-fonrtend
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/frontend/k8s/deploy.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/frontend/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/frontend/k8s/rabbitmq.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/frontend/k8s/ingress.yaml"
+       - "-n"
+       - "prod"
+
+   - name: deploy-catalogue
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/catalogue/k8s/deploy.yam"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/catalogue/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/catalogue/catalogue-db/k8s/catalogue-db-dep.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/catalogue/catalogue-db/k8s/catalogue-db-svc.yaml"
+       - "-n"
+       - "prod"
+   - name: deploy-payment
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/payment/k8s/deploy.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/payment/k8s/svc.yaml"
+       - "-n"
+       - "prod"
+   - name: deploy-orders
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/orders/k8s/deploy.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/orders/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/orders/k8s/order-db-dep.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/orders/k8s/order-db-svc.yaml"
+       - "-n"
+       - "prod"
+   - name: deploy-queue-master
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/queue-master/k8s/deploy.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/queue-master/k8s/svc.yaml"
+       - "n"
+       - "prod"
+
+   - name: deploy-shipping
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/shipping/k8s/deploy.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/shipping/k8s/svc.yaml"
+       - "n"
+       - "prod"
+   - name: deploy-user
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/user/k8s/deploy.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/user/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/user/user-db/k8s/deploy.yaml"
+       - "-f"
+       - "$(resources.inputs.carts.path)/cicd/user/user-db/k8s/svc.yaml"
+       - "n"
+       - "prod"
+
