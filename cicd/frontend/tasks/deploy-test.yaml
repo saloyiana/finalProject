@@ -23,11 +23,10 @@ spec:
        ls -gAhF
    - name: run-test
      workingDir: /workspace/frontend-resource/test/e2e-js-test/
-     image: ubuntu
+     image: node:alpine
      script: |
-       #!/usr/bin/env bash
-       pwd
-       ls -gAhF
+       #!/usr/bin/env sh
+       npm install -g casperjs mocha jscodeshift
        chmod +x runner.sh
        sh runner.sh
 
