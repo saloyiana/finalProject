@@ -20,8 +20,8 @@ spec:
       script: |
         #!/bin/sh
         rm -rf node_modules package-lock.json
-        npm init -y
-        npm install --save chrome-remote-interface chrome-launcher mocha express request body-parser sinon chai chai-http http
+        #npm init -y
+        #npm install --save chrome-remote-interface chrome-launcher mocha express request body-parser sinon chai chai-http http
         source runner.sh
 
 
