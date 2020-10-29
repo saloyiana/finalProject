@@ -36,7 +36,7 @@ namespaces:
 	kubectl create namespace test
 	kubectl create namespace prod
 	kubectl create namespace ingress-nginx
-	kubectl create namespace elk
+	kubectl create namespace logging
 	kubectl create namespace grafana
 install-ingress:
 	echo "Ingress: install" | tee -a output.log
@@ -54,7 +54,7 @@ elk:
 	helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=elk
 	helm install fluent-bit fluent/fluent-bit --namespace=elk
 	helm install kibana elastic/kibana --version=7.9.0 --namespace=elk --set service.type=NodePort
-	kubectl apply -f ELK/ingress.yaml -n elk
+	kubectl apply -f ELK/ingress.yaml -n logging
 
 
 main:
