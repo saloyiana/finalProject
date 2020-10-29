@@ -22,3 +22,19 @@ spec:
         inputs:
         - name: user
           resource: source
+    - name: run-test
+      runAfter: ["deploy-using-kubectl"]
+      taskRef:
+        name: test-deploy-user
+      resources:
+        inputs:
+        - name: user
+          resource: source
+    - name: deploy-to-prod
+      runAfter: ["run-test"]
+      taskRef:
+        name: user-deploy-using-kubectl-prod
+      resources:
+        inputs:
+        - name: user 
+          resource: source 
