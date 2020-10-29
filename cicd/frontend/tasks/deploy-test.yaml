@@ -22,7 +22,12 @@ spec:
        pwd 
        ls -gAhF
    - name: run-test
+     workingDir: /workspace/frontend-resource/test/e2e-js-test/
      image: ubuntu
-     command: 
-     - chmod +x "$(params.pathToSh)"
-     - sh "$(params.pathToSh)"
+     script: |
+       #!/usr/bin/env bash
+       pwd
+       ls -gAhF
+       chmod +x runner.sh
+       sh runner.sh
+
