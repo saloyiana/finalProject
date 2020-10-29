@@ -8,7 +8,7 @@ spec:
     - name: pathToSh
       type: string
       description: The path to the yaml file to deploy within the git source
-      default: $(resources.inputs.frontend-resource.path)/cicd/test/e2e-js-test/runner.sh
+      default: $(resources.inputs.frontend-resource.path)/test/e2e-js-test/runner.sh
   resources:
     inputs:
       - name: frontend-resource
