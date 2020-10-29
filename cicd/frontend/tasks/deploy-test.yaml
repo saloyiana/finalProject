@@ -19,9 +19,7 @@ spec:
       image: saloyiana/e2e-test-js
       script: |
         #!/bin/sh
-        rm -rf node_modules package-lock.json
-        #npm init -y
-        #npm install --save chrome-remote-interface chrome-launcher mocha express request body-parser sinon chai chai-http http
+        chmod +x runner.sh
         source runner.sh
 
 

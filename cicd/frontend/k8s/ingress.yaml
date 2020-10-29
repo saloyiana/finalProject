@@ -12,4 +12,3 @@ spec:
         backend:
           serviceName: front-end
           servicePort: 8079
-
