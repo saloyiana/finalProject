@@ -113,17 +113,21 @@ catalogue-down:
 	kubectl delete -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test 
 
 orders-install:
-	kubectl apply -f cicd/orders/tasks/pipelineResource.yaml
-	kubectl apply -f cicd/orders/tasks/task.yaml
-	kubectl apply -f cicd/orders/tasks/deploy-using-kubectl.yaml 
-	kubectl apply -f cicd/orders/tasks/pipeline/pipeline.yaml 
-	kubectl apply -f cicd/orders/tasks/pipeline/pipelinerun.yaml 
+	kubectl apply -f cicd/orders/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/task.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/run-test.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/deploy-to-prod.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/pipeline/pipeline.yaml -n test 
+	kubectl apply -f cicd/orders/tasks/pipeline/pipelinerun.yaml -n test 
 orders-down:
-	kubectl delete -f cicd/orders/tasks/pipelineResource.yaml 
-	kubectl delete -f cicd/orders/tasks/task.yaml 
-	kubectl delete -f cicd/orders/tasks/deploy-using-kubectl.yaml 
-	kubectl delete -f cicd/orders/tasks/pipeline/pipeline.yaml 
-	kubectl delete -f cicd/orders/tasks/pipeline/pipelinerun.yaml 
+	kubectl delete -f cicd/orders/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/task.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/run-test.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/deploy-to-prod.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/pipeline/pipeline.yaml -n test 
+	kubectl delete -f cicd/orders/tasks/pipeline/pipelinerun.yaml -n test 
 payment-install:
 	kubectl apply -f cicd/payment/tasks/pipelineResource.yaml 
 	kubectl apply -f cicd/payment/tasks/task.yaml 
