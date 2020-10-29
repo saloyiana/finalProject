@@ -94,19 +94,23 @@ cart-down:
 	kubectl delete -f cicd/carts/tasks/pipeline/pipeline.yaml -n test 
 	kubectl delete -f cicd/carts/tasks/pipeline/pipelinerun.yaml -n test
 catalogue-install:
-	kubectl apply -f cicd/catalogue/tasks/pipelineResource.yaml
-	kubectl apply -f cicd/catalogue/tasks/task.yaml
-	kubectl apply -f cicd/catalogue/catalogue-db/tasks/task.yaml 
-	kubectl apply -f cicd/catalogue/tasks/deploy-catalogue.yaml
-	kubectl apply -f cicd/catalogue/tasks/pipeline/pipeline.yaml
-	kubectl apply -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml
+	kubectl apply -f cicd/catalogue/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/task.yaml -n test 
+	kubectl apply -f cicd/catalogue/catalogue-db/tasks/task.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/deploy-catalogue.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/run-test.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/deploy-to-prod.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/pipeline/pipeline.yaml -n test 
+	kubectl apply -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test 
 catalogue-down:
-	kubectl delete -f cicd/catalogue/tasks/pipelineResource.yaml 
-	kubectl delete -f cicd/catalogue/tasks/task.yaml 
-	kubectl delete -f cicd/catalogue/catalogue-db/tasks/task.yaml 
-	kubectl delete -f cicd/catalogue/tasks/deploy-catalogue.yaml 
-	kubectl delete -f cicd/catalogue/tasks/pipeline/pipeline.yaml 
-	kubectl delete -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml 
+	kubectl delete -f cicd/catalogue/tasks/pipelineResource.yaml -n test
+	kubectl delete -f cicd/catalogue/tasks/task.yaml -n test 
+	kubectl delete -f cicd/catalogue/catalogue-db/tasks/task.yaml -n test 
+	kubectl delete -f cicd/catalogue/tasks/deploy-catalogue.yaml -n test 
+	kubectl delete -f cicd/catalogue/tasks/run-test.yaml -n test 
+	kubectl delete -f cicd/catalogue/tasks/deploy-to-prod.yaml -n test 
+	kubectl delete -f cicd/catalogue/tasks/pipeline/pipeline.yaml -n test 
+	kubectl delete -f cicd/catalogue/tasks/pipeline/pipelinerun.yaml -n test 
 
 orders-install:
 	kubectl apply -f cicd/orders/tasks/pipelineResource.yaml
