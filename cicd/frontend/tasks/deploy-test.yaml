@@ -15,11 +15,12 @@ spec:
         type: git
   steps:
    - name: debug
+     workingDir: /workspace/frontend-resource/test/e2e-js-test/
      image: ubuntu
-     command:
-     - ls
-     - cd frontend-resource/
-     - ls
+      script: | 
+        #!/usr/bin/env bash
+        pwd 
+        ls -gAhF
    - name: run-test
      image: ubuntu
      command: 
