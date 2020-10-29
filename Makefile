@@ -161,17 +161,21 @@ user-down:
 	kubectl delete -f cicd/user/tasks/pipeline/pipelinerun.yaml 
 
 shipping-install:
-	kubectl apply -f cicd/shipping/tasks/pipelineResource.yaml 
-	kubectl apply -f cicd/shipping/tasks/task.yaml 
-	kubectl apply -f cicd/shipping/tasks/deploy-using-kubectl.yaml 
-	kubectl apply -f cicd/shipping/tasks/pipeline/pipeline.yaml 
-	kubectl apply -f cicd/shipping/tasks/pipeline/pipelinerun.yaml 
+	kubectl apply -f cicd/shipping/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/shipping/tasks/task.yaml -n test 
+	kubectl apply -f cicd/shipping/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl apply -f cicd/shipping/tasks/run-test.yaml -n test 
+	kubectl apply -f cicd/shipping/tasks/deploy-to-prod.yaml -n test 
+	kubectl apply -f cicd/shipping/tasks/pipeline/pipeline.yaml -n test 
+	kubectl apply -f cicd/shipping/tasks/pipeline/pipelinerun.yaml -n test 
 shipping-down:
-	kubectl delete -f cicd/shipping/tasks/pipelineResource.yaml 
-	kubectl delete -f cicd/shipping/tasks/task.yaml 
-	kubectl delete -f cicd/shipping/tasks/deploy-using-kubectl.yaml
-	kubectl delete -f cicd/shipping/tasks/pipeline/pipeline.yaml 
-	kubectl delete -f cicd/shipping/tasks/pipeline/pipelinerun.yaml
+	kubectl delete -f cicd/shipping/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/shipping/tasks/task.yaml -n test 
+	kubectl delete -f cicd/shipping/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl delete -f cicd/shipping/tasks/run-test.yaml -n test 
+	kubectl delete -f cicd/shipping/tasks/deploy-to-prod.yaml -n test 
+	kubectl delete -f cicd/shipping/tasks/pipeline/pipeline.yaml -n test 
+	kubectl delete -f cicd/shipping/tasks/pipeline/pipelinerun.yaml -n test 
 queue-master-install:
 	kubectl apply -f cicd/queue-master/tasks/pipelineResource.yaml -n test 
 	kubectl apply -f cicd/queue-master/tasks/task.yaml -n test 
