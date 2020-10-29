@@ -29,3 +29,19 @@ spec:
         inputs:
         - name: catalogue
           resource: source
+    - name: run-test
+      runAfter: ["deploy-using-kubectl"]
+      taskRef:
+        name: test-deploy-catalogue
+      resources:
+        inputs:
+        - name: catalogue
+          resource: source
+    - name: deploy-to-prod
+      runAfter: ["run-test"]
+      taskRef:
+        name: catalogue-deploy-using-kubectl-prod
+      resources:
+        inputs:
+        - name: catalogue 
+          resource: source 
