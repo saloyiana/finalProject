@@ -24,6 +24,6 @@ spec:
        - "-n"
        - "test"
    - name: run-wait
-    image: lachlanevenson/k8s-kubectl
-    script: |
-     kubectl wait --for=condition=complete job/test -n test
+     image: lachlanevenson/k8s-kubectl
+     script: |
+       kubectl wait --namespace test --for=condition=complete job/test --timeout=200s

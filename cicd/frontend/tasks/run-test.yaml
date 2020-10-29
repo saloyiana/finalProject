@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: test-deploy
+  serviceAccountName: build-bot
+spec:
+  params:
+    - name: pathToYamlFile
+      type: string
+      description: The path to the yaml file to deploy within the git source
+      default: $(resources.inputs.frontend-resource.path)/test/e2e-js-test/try.sh
+  resources:
+    inputs:
+      - name: frontend-resource
+        type: git
+  steps:
+    - name: run-test
+      workingDir: /workspace/frontend-resource/test/e2e-js-test/
+      image: saloyiana/e2e-test-js
+      script: |
+        #!/bin/sh
+        chmod +x try.sh
+        source try.sh

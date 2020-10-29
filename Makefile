@@ -65,16 +65,18 @@ frontend:
 	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml -n test 
 	kubectl apply -f cicd/frontend/tasks/task.yaml -n test 
 	kubectl apply -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/frontend/tasks/deploy-test.yaml -n test 
+	kubectl apply -f cicd/frontend/tasks/run-test.yaml -n test 
 	kubectl apply -f cicd/frontend/tasks/deploy-to-prod.yaml -n test 
 	kubectl apply -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test 
 	kubectl apply -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test
 frontend-down:
-	kubectl delete -f cicd/frontend/tasks/pipelineResource.yaml
-	kubectl delete -f cicd/frontend/tasks/task.yaml
-	kubectl delete -f cicd/frontend/tasks/deploy-using-kubectl.yaml
-	kubectl delete -f cicd/frontend/tasks/pipeline/pipeline.yaml
-	kubectl delete -f cicd/frontend/tasks/pipeline/pipelinerun.yaml
+	kubectl delete -f cicd/frontend/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/frontend/tasks/task.yaml -n test 
+	kubectl delete -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test
+	kubectl apply -f cicd/frontend/tasks/deploy-test.yaml -n test 
+	kubectl apply -f cicd/frontend/tasks/deploy-to-prod.yaml -n test
+	kubectl delete -f cicd/frontend/tasks/pipeline/pipeline.yaml -n test 
+	kubectl delete -f cicd/frontend/tasks/pipeline/pipelinerun.yaml -n test
 cart-install:
 	kubectl apply -f cicd/carts/tasks/pipelineResource.yaml 
 	kubectl apply -f cicd/carts/tasks/task.yaml
