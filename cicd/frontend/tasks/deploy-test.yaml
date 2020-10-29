@@ -4,14 +4,18 @@ metadata:
   name: test-deploy
   serviceAccountName: build-bot
 spec:
+  params:
+    - name: pathToSh
+      type: string
+      description: The path to the yaml file to deploy within the git source
+      default: $(resources.inputs.frontend-resource.path)/cicd/test/e2e-js-test/runner.sh
   resources:
     inputs:
       - name: frontend-resource
         type: git
   steps:
    - name: run-test
-     workingDir: /workspace/frontend-resource/test/e2e-js-test/
      image: ubuntu
      command: 
-     - chmod +x runner.sh
-     - sh runner.sh
+     - chmod +x "$(params.pathToSh)"
+     - sh "$(params.pathToSh)"
