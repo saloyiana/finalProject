@@ -173,17 +173,20 @@ shipping-down:
 	kubectl delete -f cicd/shipping/tasks/pipeline/pipeline.yaml 
 	kubectl delete -f cicd/shipping/tasks/pipeline/pipelinerun.yaml
 queue-master-install:
-	kubectl apply -f cicd/queue-master/tasks/pipelineResource.yaml
-	kubectl apply -f cicd/queue-master/tasks/task.yaml 
-	kubectl apply -f cicd/queue-master/tasks/deploy-using-kubectl.yaml 
-	kubectl apply -f cicd/queue-master/tasks/pipeline/pipeline.yaml 
-	kubectl apply -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml
+	kubectl apply -f cicd/queue-master/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/task.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/run-test.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/deploy-to-prod.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test 
+	kubectl apply -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml -n test 
 queue-master-down:
-	kubectl delete -f cicd/queue-master/tasks/pipelineResource.yaml 
-	kubectl delete -f cicd/queue-master/tasks/task.yaml 
-	kubectl delete -f cicd/queue-master/tasks/deploy-using-kubectl.yaml 
-	kubectl delete -f cicd/queue-master/tasks/pipeline/pipeline.yaml 
-	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml
-
+	kubectl delete -f cicd/queue-master/tasks/pipelineResource.yaml -n test 
+	kubectl delete -f cicd/queue-master/tasks/task.yaml -n test 
+	kubectl delete -f cicd/queue-master/tasks/deploy-using-kubectl.yaml -n test
+	kubectl delete -f cicd/queue-master/tasks/run-test.yaml -n test 
+	kubectl delete -f cicd/queue-master/tasks/deploy-to-prod.yaml -n test  
+	kubectl delete -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test 
+	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml-n test 
 logs:
 	tkn pr logs -f -n test
