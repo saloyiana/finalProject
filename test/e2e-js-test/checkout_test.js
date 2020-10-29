@@ -5,7 +5,7 @@
   var __utils__ = require("clientutils").create();
 
       casper.test.begin("User logs in", 3, function suite(test) {
-    casper.start("http://front-end/", function() {
+    casper.start("http://front-end:30001/", function() {
       test.assertNotVisible("#login-modal", "user does not see the login dialogue");
 
       this.clickLabel("Login");
