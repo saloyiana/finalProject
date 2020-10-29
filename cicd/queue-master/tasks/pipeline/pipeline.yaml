@@ -22,3 +22,19 @@ spec:
         inputs:
         - name: queue-master
           resource: source
+    - name: run-test
+      runAfter: ["deploy-using-kubectl"]
+      taskRef:
+        name: test-deploy-queue-master
+      resources:
+        inputs:
+        - name: queue-master
+          resource: source
+    - name: deploy-to-prod
+      runAfter: ["run-test"]
+      taskRef:
+        name: queue-master-deploy-using-kubectl-prod
+      resources:
+        inputs:
+        - name: queue-master 
+          resource: source 

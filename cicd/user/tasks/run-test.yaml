@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: test-deploy-user
+  serviceAccountName: build-bot
+spec:
+  params:
+    - name: pathToSh
+      type: string
+      description: The bash script file to run the test. 
+      default: $(resources.inputs.user.path)/test/e2e-js-test/therunner.sh
+  resources:
+    inputs:
+      - name: user
+        type: git
+  steps:
+    - name: run-test
+      workingDir: /workspace/user/test/e2e-js-test/
+      image: saloyiana/e2e-test-js
+      script: |
+        #!/bin/sh
+        chmod +x "$(params.pathToSh)"
+        source "$(params.pathToSh)"
