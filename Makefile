@@ -221,3 +221,15 @@ logs:
 	tkn pr logs -f -n test
 list:
 	tkn pr list -n test
+
+platform-port:
+	kubectl get --namespace test -o jsonpath="{.spec.ports[0].nodePort}" services front-end
+	kubectl get --namespace prod -o jsonpath="{.spec.ports[0].nodePort}" services front-end
+
+kibana-port:
+	kubectl get --namespace logging -o jsonpath="{.spec.ports[0].nodePort}" services kibana-kibana
+
+grafana-port:
+	kubectl get --namespace monitoring -o jsonpath="{.spec.ports[0].nodePort}" services grafana
+
+ports: platform-port kibana-port grafana-port
