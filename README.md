@@ -60,12 +60,9 @@ stringData:
 4. Run this command to run the pipelines and they on the other hand will deploy the microservices to test namespace, run the test, and finally deploy them to prod namespace   
 `make build`  
 
-* To see the logs of the pipelines, run 
- `make logs`
-* To list the pipelines, run   
-`make list`
-* To clean after the pipelines, run 
- `make clean`
+* To see the logs of the pipelines, run `make logs`
+* To list the pipelines, run `make list`
+* To clean after the pipelines, run  `make clean`
 * To delete the cluster, run 
  `make cluster-down`
 * If all the pipelines failed somehow, you may need to delete one of them and rerun it again, makefile will help (e.g. `make frontend-down` and then `make frontend`) 
