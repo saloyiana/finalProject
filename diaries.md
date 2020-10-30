@@ -13,7 +13,7 @@
 - Day5: Shipping and payment have been done today ( similar to yesterday's job ) and everything kinda went smoothly after yesterday’s struggle.
 - Day6: Today was user and its database day, I have a problem with the permission denied again, the building phase is successfully done though.
 - Day7: Today is the day of building and running the queue master image and the order image, I faced a lot of errors, some of them I faced before. 
-![Test Image 1](image/week1.png)
+![Test Image 1](image/week1.png | width=48)
 ![Test Image 2](image/week1-2.png)
 
 ## Week2:  
