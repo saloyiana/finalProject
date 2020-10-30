@@ -65,7 +65,7 @@ stringData:
 * To clean after the pipelines, run  `make clean`
 * To delete the cluster, run 
  `make cluster-down`
-* If all the pipelines failed somehow, you may need to delete one of them and rerun it again, makefile will help (e.g. `make frontend-down` and then `make frontend`) 
+* If all the pipelines failed somehow, you may need to delete one of them and rerun it again, makefile will help (e.g. `make frontend-down` and then `make frontend`)   
 That is all, Easy? :smirk:
 
 ### Examples of the results that may face: 
