@@ -1,14 +1,14 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: runner
+  name: test-runner
 spec:
   serviceAccountName: build-bot
   taskRef:
     name: build-docker-image-from-git-source-e2e
   params:
   - name: IMAGE
-    value: "saloyiana/e2e-test"
+    value: "saloyiana/e2e-test-js"
   resources:
     inputs:
     - name: docker-source

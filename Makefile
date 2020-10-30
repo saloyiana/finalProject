@@ -218,6 +218,14 @@ queue-master-down:
 	kubectl delete -f cicd/queue-master/tasks/deploy-to-prod.yaml -n test  
 	kubectl delete -f cicd/queue-master/pipeline/pipeline.yaml -n test 
 	kubectl delete -f cicd/queue-master/pipeline/pipelinerun.yaml -n test 
+test-install:
+	kubectl apply -f cicd/e2e-test/pipelineResource.yaml -n test
+	kubectl apply -f cicd/e2e-test/task.yaml -n test
+	kubectl apply -f cicd/e2e-test/taskrunner.yaml -n test 
+test-down:
+	kubectl delete -f cicd/e2e-test/pipelineResource.yaml -n test
+	kubectl delete -f cicd/e2e-test/task.yaml -n test
+	kubectl delete -f cicd/e2e-test/taskrunner.yaml -n test
 logs:
 	tkn pr logs -f -n test
 list:
@@ -237,6 +245,7 @@ ports:
 	./bashScript.sh
 
 clean-test-env: clean delete-pods-test
+
 delete-pods-test:
 	kubectl delete -f cicd/queue-master/k8s/ -n test
 	kubectl delete -f cicd/orders/k8s/ -n test

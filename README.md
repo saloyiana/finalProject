@@ -66,7 +66,8 @@ stringData:
 * If all the pipelines failed somehow, you may need to delete one of them and rerun it again, makefile will help (e.g. `make frontend-down` and then `make frontend`)   
 * To get the ports, run `make ports` 
 * To configure the ingress, run `make install-ingress`
-
+* To run the task that build and push the test image, run `test-install`  
+ 
 **That is all, Easy? :smirk:**
 
 ### Examples of the results that may face: 

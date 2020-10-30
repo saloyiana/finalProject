@@ -9,16 +9,16 @@ spec:
     - name: pathToDockerFile
       type: string
       description: The path to the dockerfile to build
-      default: $(resources.inputs.docker-source.path)/Dockerfile
+      default: $(resources.inputs.e2e.path)/e2e-js-test/Dockerfile
     - name: pathToContext
       type: string
       description: |
         The build context used by Kaniko
         (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
-      default: $(resources.inputs.docker-source.path)
+      default: $(resources.inputs.e2e.path)/e2e-js-test/
   resources:
     inputs:
-      - name: docker-source
+      - name: e2e
         type: git
   steps:
     - name: build-and-push
