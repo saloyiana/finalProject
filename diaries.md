@@ -41,7 +41,7 @@
 - Day18: Started to create tasks for running the test and included them in the pipelines as a new step, didn't try to run them yet. 
 - Day19:  Started with trying to run the test and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and then surprisingly pass!
 - Day20: Created the deploye to prod tasks and completed the pipeline with the last step. 
-- Day21: Trying to add the clean step and review all the work again ... 
+- Day21: Trying to review all the work again and writing the readme ... 
 
 ![Test Image 5](image/week3-1.png)
 ![Test Image 6](image/later.jpg)

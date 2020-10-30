@@ -24,10 +24,10 @@ One of the main given instructions is to deploy the entire system (to test, test
 
 ## What we have so far (result): 
 Eight tekton pipelines (each microservice has one), each has at least four tasks,  work as follow:  
-1. build and push the required image to docker hub, if successfully done, 
+1. Build and push the required image to docker hub, if successfully done, 
 2. Deploy microservices using Kubernetes deployment and service that uses the same image that just built to test namespace, if successfully done,
 3. Run the test against the test namespace, if it is a pass 
-4. deploy the entire platform to prod namespace  
+4. Deploy the entire platform to prod namespace  
 
 Also, using `make elk`, elastic search and kibana will be ready, and `make install-prometheus install-grafana`, prometheus and grafana will be ready.
 
@@ -35,11 +35,11 @@ Also, using `make elk`, elastic search and kibana will be ready, and `make insta
 
 Now my respected readers to test my code, follow the steps below:
 
-1. clone the repo:   
+1. Clone the repo:   
 `git clone https://github.com/saloyiana/finalProject/`  
-2. change your dirctory to it   
+2. Change your dirctory to it   
 `cd finalProject/`     
-3. run this command to build the cluster , deploy tekton and tekton cli as well , namespaces , configure elf and grafana.   
+3. Run this command to build the cluster , deploy tekton and tekton cli as well , namespaces , configure elf and grafana.   
 `make up`   
 
 4. Then you need to add the secret (until the vault be ready), as follows:
@@ -57,7 +57,7 @@ stringData:
   password: <YOUR_PASSWORD_OR_GENERATED_TOKEN>
 ```
   3. `kubectl apply -f secret.yaml -n test`
-4. Run this command to run the pipelines and they on the other hand will deploy the microservices to test namespace, run the test, and finally deploy them to prod namespace   
+5. Run this command to run the pipelines and they on the other hand will deploy the microservices to test namespace, run the test, and finally deploy them to prod namespace   
 `make build`  
 
 * To see the logs of the pipelines, run `make logs`
@@ -71,19 +71,19 @@ stringData:
 
 ### Examples of the results that may face: 
 
-#### building and pushing the images :woman_juggling::
+#### Building and pushing the images :woman_juggling::
 ![Test Image 1](image/step-1.png)
 
-#### deploying to test :fist_left::
+#### Deploying to test :fist_left::
 ![Test Image 2](image/step-2.png)
 
-#### passing the test :smiley::
+#### Passing the test :smiley::
 ![Test Image 3](image/step-3-pass.png)
 
 #### Failing at the test :sweat::
 ![Test Image 4](image/step-3-fail.png)
 
-### deploying to prod :golf::
+### Deploying to prod :golf::
 ![Test Image 5](image/step-4.png)
 
 Done. 
