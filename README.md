@@ -39,7 +39,7 @@ Now my respected readers to test my code, follow the steps below:
 `git clone https://github.com/saloyiana/finalProject/`  
 2. change your dirctory to it   
 `cd finalProject/`     
-3. run this command to build the cluster , deploy tekton and tekton cli as well , namespaces , configure elf and grafana.
+3. run this command to build the cluster , deploy tekton and tekton cli as well , namespaces , configure elf and grafana.  
 `make up`   
 
 4. Then you need to add the secret (until the vault be ready), as follows:
