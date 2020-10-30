@@ -232,4 +232,5 @@ kibana-port:
 grafana-port:
 	kubectl get --namespace monitoring -o jsonpath="{.spec.ports[0].nodePort}" services grafana
 
-ports: kibana-port grafana-port platform-port
+ports:
+	./bashScript.sh
