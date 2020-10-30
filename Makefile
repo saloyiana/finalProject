@@ -43,6 +43,7 @@ install-ingress:
 	echo "Ingress: install" | tee -a output.log
 	kubectl apply -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml | tee -a output.log
 	kubectl wait --namespace ingress-nginx --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s
+	kubectl apply -n prod -f cicd/frontend/k8s/ingress.yaml
 
 delete-ingress:
 	echo "Ingress: delete" | tee -a output.log
