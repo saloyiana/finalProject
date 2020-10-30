@@ -78,19 +78,21 @@ stringData:
 ![Test Image 2](image/step-2.png)
 
 #### Passing the test :smiley::
-![Test Image 3](image/step-3-pass.png)
+![Test Image 3](image/step-3-pass-2.png)
+
+![Test Image 4](image/step-3-pass.png)
 
 #### Failing at the test :sweat::
-![Test Image 4](image/step-3-fail.png)
+![Test Image 5](image/step-3-fail.png)
 
 #### Deploying to prod :golf::
-![Test Image 5](image/step-4.png)
+![Test Image 6](image/step-4.png)
 
 #### Grafana :sparkles::
-![Test Image 5](image/garfana.png)
+![Test Image 7](image/garfana.png)
 
 #### Kibana :page_with_curl::
 
-![Test Image 5](image/kibana-one-of-the-microservices.png)
-![Test Image 5](image/kibana-otherOne.png)
+![Test Image 8](image/kibana-one-of-the-microservices.png)
+![Test Image 9](image/kibana-otherOne.png)
 
