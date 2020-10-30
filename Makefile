@@ -232,4 +232,4 @@ kibana-port:
 grafana-port:
 	kubectl get --namespace monitoring -o jsonpath="{.spec.ports[0].nodePort}" services grafana
 
-ports: platform-port kibana-port grafana-port
+ports: kibana-port grafana-port platform-port
