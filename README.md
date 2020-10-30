@@ -32,7 +32,7 @@ Eight tekton pipelines (each microservice has one), each has at least five tasks
 
 Also, using `make elk`, elastic search and kibana will be ready, and `make grafana`, prometheus and grafana will be ready.
 
-## My instruction :) :
+## My instruction :innocent::
 
 Now my respected readers to test my code, follow the steps below:
 
