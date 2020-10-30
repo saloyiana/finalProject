@@ -94,4 +94,3 @@ stringData:
 ![Test Image 5](image/kibana-one-of-the-microservices.png)
 ![Test Image 5](image/kibana-otherOne.png)
 
-***Done.***
