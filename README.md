@@ -23,14 +23,13 @@ One of the main given instructions is to deploy the entire system (to test, test
 
 
 ## What we have so far (result): 
-Eight tekton pipelines (each microservice has one), each has at least five tasks,  work as follow:  
+Eight tekton pipelines (each microservice has one), each has at least four tasks,  work as follow:  
 1. build and push the required image to docker hub, if successfully done, 
 2. Deploy microservices using Kubernetes deployment and service that uses the same image that just built to test namespace, if successfully done,
 3. Run the test against the test namespace, if it is a pass 
-4. Clean the test environment, and then
-5. deploy the entire platform to prod namespace  
+4. deploy the entire platform to prod namespace  
 
-Also, using `make elk`, elastic search and kibana will be ready, and `make grafana`, prometheus and grafana will be ready.
+Also, using `make elk`, elastic search and kibana will be ready, and `make install-prometheus install-grafana`, prometheus and grafana will be ready.
 
 ## My instruction :innocent::
 
@@ -71,6 +70,7 @@ stringData:
 That is all, Easy? :smirk:
 
 ### Examples of the results that may face: 
+
 #### building and pushing the images :woman_juggling::
 
 #### deploying to test :fist_left::
@@ -82,8 +82,6 @@ That is all, Easy? :smirk:
 
 #### Failing at the test :sweat::
 ![Test Image 1](image/test.png)
-
-#### cleaning :stop_sign::
 
 ### deploying to prod :golf::
 
