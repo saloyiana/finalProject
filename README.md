@@ -30,16 +30,34 @@ Eight tekton pipelines (each microservice has one), each has at least five tasks
 4. Clean the test environment, and then
 5. deploy the entire platform to prod namespace  
 
-Also, using `make elk`,  the elastic search and kibana will be ready, and `make grafana`, will be ready.
+Also, using `make elk`, elastic search and kibana will be ready, and `make grafana`, prometheus and grafana will be ready.
 
 ## My instruction :) :
 
+Now my respected readers to test my code, follow the steps below:
+
+1. clone the repo:   
+`git clone https://github.com/saloyiana/finalProject/`  
+2. change your dirctory to it   
+`cd finalProject/`     
+3. run this command to build the cluster , deploy tekton and tekton cli as well , namespaces , configure elf and grafana.
 `make up`   
-will build the cluster , deploy tekton and tekton cli as well , namespaces , configure elf and grafana.  
 
-Then you need to add the secret ( until the vault be ready )  
-
+4. Then you need to add the secret (until the vault be ready), as follows:
+  1. `vim secret.yaml`  
+  2. copy the below code:
+  ``` apiVersion: v1
+kind: Secret
+metadata:
+  name: basic-user-pass
+  annotations:
+    tekton.dev/docker-0: https://index.docker.io # Described below
+type: kubernetes.io/basic-auth
+stringData:
+  username: <YOUR_USERNAME>
+  password: <YOUR_PASSWORD_OR_GENRATED_TOKEN>
+```
+  3. `kubectl apply -f secret.yaml -n test`
+4. run this command to run the pipelines and they on the other hand will deploy the microservices to test namespace, run the test, and finally deploy them to prod namespace. 
 `make build`     
-
-will run the pipelines that one the other hand will deploy the microservices to test namespace, run the test, and finally deploy them to prod namespace. 
 
