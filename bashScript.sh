@@ -10,7 +10,7 @@ export purple='\033[0;35m'
 export cyan='\033[0;36m'
 export white='\033[0;37m'
 export info=$cyan
-echo -e "\n${info}SockShop${reset}"
+echo -e "\n${info}WeaveSocks${reset}"
 echo -e "\n${info}-----------${reset}"
 curl http://checkip.amazonaws.com
 echo -e "\n${info}Grafana Port${blue}"
