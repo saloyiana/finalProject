@@ -2,9 +2,9 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: cluster
-  namespace: elk
   annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
+  #  ingress.kubernetes.io/ssl-redirect: "false"
+     kubernetes.io/ingress.class: nginx
 spec:
   rules:
   - http:
