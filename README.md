@@ -68,6 +68,23 @@ stringData:
 * To delete the cluster, run 
  `make cluster-down`
 
-Easy? :face_with_head_bandage:
+That is all, Easy? :smirk:
 
-![Test Image 3](image/test.png)
+### Examples of the results that may face: 
+#### building and pushing the images :woman_juggling::
+
+#### deploying to test :fist_left::
+
+
+#### passing the test :smiley::
+![Test Image 1](image/test.png)
+
+
+#### Failing at the test :sweat::
+![Test Image 1](image/test.png)
+
+#### cleaning :stop_sign::
+
+### deploying to prod :golf::
+
+Done. 
