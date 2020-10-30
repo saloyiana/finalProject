@@ -46,6 +46,8 @@
 ![Test Image 5](image/week3-1.png)
 ![Test Image 6](image/later.jpg)
 ![Test Image 7](image/week3-2.png)
+![Test Image 8](image/week3-3.png)
+![Test Image 9](image/week3-4.png)
 
 ## There is some tasks that I had done during the days, such as preparing the makefile. 
 

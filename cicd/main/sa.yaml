@@ -4,4 +4,3 @@ metadata:
   name: build-bot
 secrets:
   - name: basic-user-pass
-  - name: git-user-pass
