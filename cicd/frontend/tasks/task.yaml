@@ -1,0 +1,44 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-docker-image-from-git-source-front-end
+spec:
+  params:
+    - name: IMAGE
+      description: Name (reference) of the image to build.
+      default: "saloyiana/frontend"
+    - name: pathToDockerFile
+      type: string
+      description: The path to the dockerfile to build
+      default: $(resources.inputs.frontend-resource.path)/front-end/Dockerfile
+    - name: pathToContext
+      type: string
+      description: |
+        The build context used by Kaniko
+        (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+      default: $(resources.inputs.frontend-resource.path)/front-end/
+  resources:
+    inputs:
+      - name: frontend-resource
+        type: git
+  steps:
+    - name: debug
+      workingDir: $(resources.inputs.frontend-resource.path)/front-end/
+      image: ubuntu
+      script: | 
+        #!/usr/bin/env bash
+        pwd 
+        ls -gAhF
+    - name: build-and-push
+      workingDir: /workspace/frontend-resource/front-end
+      image: gcr.io/kaniko-project/executor:v0.16.0
+      # specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential
+      env:
+        - name: "DOCKER_CONFIG"
+          value: "/tekton/home/.docker/"
+      command:
+        - /kaniko/executor
+      args:
+        - --dockerfile=$(params.pathToDockerFile)
+        - --destination=$(params.IMAGE)
+        - --context=$(params.pathToContext)

@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: shipping-runner
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: shipping-pipeline 
+  resources:
+    - name: source
+      resourceRef:
+        name: shipping

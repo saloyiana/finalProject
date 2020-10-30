@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: orders-runner
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: orders-pipeline 
+  resources:
+    - name: source
+      resourceRef:
+        name: orders

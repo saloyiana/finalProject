@@ -1,0 +1,47 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: catalogue
+spec:
+  resources:
+    - name: source
+      type: git
+  tasks:
+    - name: build
+      taskRef:
+        name: build-docker-image-from-git-source-catalogue
+      resources:
+        inputs: 
+        - name: catalogue
+          resource: source
+    - name: build-db
+      taskRef:
+        name: build-docker-image-from-git-source-catalogue-db
+      resources:
+        inputs:
+        - name: catalogue
+          resource: source
+    - name: deploy-using-kubectl
+      runAfter: ["build", "build-db"]
+      taskRef:
+        name: catalogue-deploy-using-kubectl
+      resources:
+        inputs:
+        - name: catalogue
+          resource: source
+    - name: run-test
+      runAfter: ["deploy-using-kubectl"]
+      taskRef:
+        name: test-deploy-catalogue
+      resources:
+        inputs:
+        - name: catalogue
+          resource: source
+    - name: deploy-to-prod
+      runAfter: ["run-test"]
+      taskRef:
+        name: catalogue-deploy-using-kubectl-prod
+      resources:
+        inputs:
+        - name: catalogue 
+          resource: source 

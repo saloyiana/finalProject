@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: user-db-run
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: build-docker-image-from-git-source-user-db
+  params:
+  - name: IMAGE
+    value: "saloyiana/user-db"
+  resources:
+    inputs:
+    - name: docker-source
+      resourceRef:
+        name: user-db

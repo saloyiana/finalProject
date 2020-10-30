@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: payment-run
+spec:
+  serviceAccountName: build-bot
+  taskRef:
+    name: payment-deploy-using-kubectl
+

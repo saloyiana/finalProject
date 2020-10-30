@@ -1,0 +1,40 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: queue-master-pipeline
+spec:
+  resources:
+    - name: source
+      type: git
+  tasks:
+    - name: build
+      taskRef:
+        name: build-docker-image-from-git-source-queue-master
+      resources:
+        inputs: 
+        - name: queue-master
+          resource: source
+    - name: queue-master-deploy-using-kubectl
+      runAfter: ["build"]
+      taskRef:
+        name: queue-master-deploy-using-kubectl
+      resources:
+        inputs:
+        - name: queue-master
+          resource: source
+    - name: run-test
+      runAfter: ["queue-master-deploy-using-kubectl"]
+      taskRef:
+        name: test-deploy-queue-master
+      resources:
+        inputs:
+        - name: queue-master
+          resource: source
+    - name: deploy-to-prod
+      runAfter: ["run-test"]
+      taskRef:
+        name: queue-master-deploy-using-kubectl-prod
+      resources:
+        inputs:
+        - name: queue-master 
+          resource: source 
