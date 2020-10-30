@@ -29,7 +29,7 @@
 - Day14: Completed the deploy tasks for each pipeline and the rest of the day off. 
 
 ![Test Image 3](image/week2.png)
-![Test Image 4](image/week2-2.png)
+![Test Image 4](image/week-2-2.png)
 
 ## Week 3:
 
