@@ -3,7 +3,8 @@
 
 ## Main: 
 
-There are the required service account and roles. Will be deployed as make main
+There are the required service account and roles.  
+- To deploy them, run `make main`
 
 ## Each microservices dir: 
 There are three dirs:  
