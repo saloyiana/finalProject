@@ -6,6 +6,6 @@ spec:
   type: git
   params:
     - name: revision
-      value: develop
+      value: main
     - name: url
       value: https://github.com/saloyiana/finalProject/
