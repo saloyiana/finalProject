@@ -45,7 +45,7 @@ Now my respected readers to test my code, follow the steps below:
 
 4. Then you need to add the secret (until the vault be ready), as follows:
   1. `vim secret.yaml`  
-  2. copy the below code:
+  2. Copy the below code:
   ``` apiVersion: v1
 kind: Secret
 metadata:
@@ -55,9 +55,13 @@ metadata:
 type: kubernetes.io/basic-auth
 stringData:
   username: <YOUR_USERNAME>
-  password: <YOUR_PASSWORD_OR_GENRATED_TOKEN>
+  password: <YOUR_PASSWORD_OR_GENERATED_TOKEN>
 ```
   3. `kubectl apply -f secret.yaml -n test`
-4. run this command to run the pipelines and they on the other hand will deploy the microservices to test namespace, run the test, and finally deploy them to prod namespace. 
-`make build`     
+4. Run this command to run the pipelines and they on the other hand will deploy the microservices to test namespace, run the test, and finally deploy them to prod namespace   
+`make build`  
+
+* To see the logs of the pipelines, run 
+ `make logs`
+
 
