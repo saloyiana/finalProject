@@ -93,7 +93,7 @@ spec:
        - "$(resources.inputs.carts.path)/cicd/queue-master/k8s/deploy.yaml"
        - "-f"
        - "$(resources.inputs.carts.path)/cicd/queue-master/k8s/svc.yaml"
-       - "n"
+       - "-n"
        - "prod"
 
    - name: deploy-shipping
@@ -105,7 +105,7 @@ spec:
        - "$(resources.inputs.carts.path)/cicd/shipping/k8s/deploy.yaml"
        - "-f"
        - "$(resources.inputs.carts.path)/cicd/shipping/k8s/svc.yaml"
-       - "n"
+       - "-n"
        - "prod"
    - name: deploy-user
      image: lachlanevenson/k8s-kubectl
@@ -120,6 +120,6 @@ spec:
        - "$(resources.inputs.carts.path)/cicd/user/user-db/k8s/deploy.yaml"
        - "-f"
        - "$(resources.inputs.carts.path)/cicd/user/user-db/k8s/svc.yaml"
-       - "n"
+       - "-n"
        - "prod"
 
