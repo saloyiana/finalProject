@@ -219,3 +219,5 @@ queue-master-down:
 	kubectl delete -f cicd/queue-master/pipeline/pipelinerun.yaml -n test 
 logs:
 	tkn pr logs -f -n test
+list:
+	tkn pr list -n test
