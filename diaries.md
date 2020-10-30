@@ -1,7 +1,5 @@
 ### The working flow:
 
-**Each week will have to do title.**
-
 ## Week 1:   
 
 **Dockerfiles building and running.**
