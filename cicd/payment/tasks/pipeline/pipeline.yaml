@@ -23,7 +23,7 @@ spec:
         - name: payment
           resource: source
     - name: run-test
-      runAfter: ["deploy-using-kubectl"]
+      runAfter: ["payment-deploy-using-kubectl"]
       taskRef:
         name: test-deploy-payment
       resources:

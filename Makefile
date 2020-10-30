@@ -1,7 +1,7 @@
 #FIRST STEP:
 
 .PHONY: cluster namespaces tekton cli
-up: cluster namespaces tekton cli install-ingress main elk
+up: cluster namespaces tekton cli main elk install-prometheus install-grafana
 build: frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
 
 cluster:
@@ -12,7 +12,6 @@ cluster:
 	    -v /etc/machine-id:/etc/machine-id:ro \
 	    -v /var/log/journal:/var/log/journal:ro \
 	    -v /var/run/docker.sock:/var/run/docker.sock \
-	    --k3s-server-arg '--no-deploy=traefik' \
 	    --agents 3
 cluster-down:
 	k3d cluster delete sockShop
@@ -216,6 +215,6 @@ queue-master-down:
 	kubectl delete -f cicd/queue-master/tasks/run-test.yaml -n test 
 	kubectl delete -f cicd/queue-master/tasks/deploy-to-prod.yaml -n test  
 	kubectl delete -f cicd/queue-master/tasks/pipeline/pipeline.yaml -n test 
-	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml-n test 
+	kubectl delete -f cicd/queue-master/tasks/pipeline/pipelinerun.yaml -n test 
 logs:
 	tkn pr logs -f -n test

@@ -23,7 +23,7 @@ spec:
         - name: orders
           resource: source
     - name: run-test
-      runAfter: ["deploy-using-kubectl"]
+      runAfter: ["orders-deploy-using-kubectl"]
       taskRef:
         name: test-deploy-orders
       resources:

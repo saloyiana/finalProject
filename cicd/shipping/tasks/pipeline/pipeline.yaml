@@ -23,7 +23,7 @@ spec:
         - name: shipping
           resource: source
     - name: run-test
-      runAfter: ["deploy-using-kubectl"]
+      runAfter: ["shipping-deploy-using-kubectl"]
       taskRef:
         name: test-deploy-shipping
       resources:
