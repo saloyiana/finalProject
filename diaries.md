@@ -12,8 +12,8 @@
 - Day4: Today's image was a cart, and the plugins of the pom file needed to be edited, and then built a new multistage Dockerfile and try to run it.
 - Day5: Shipping and payment have been done today ( similar to yesterday's job ) and everything kinda went smoothly after yesterday’s struggle.
 - Day6: Today was user and its database day, I have a problem with the permission denied again, the building phase is successfully done though.
-- Day7: Today is the day of building and running the queue master image and the order image, I faced a lot of errors, some of them I faced before. 
-![Test Image 1](image/week1.png | width=48)
+- Day7: Today is the day of building and running the queue master image and the order image, I faced a lot of errors, some of them I faced before.    
+![Test Image 1](image/week1.png)
 ![Test Image 2](image/week1-2.png)
 
 ## Week2:  
