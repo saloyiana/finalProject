@@ -235,3 +235,17 @@ grafana-port:
 
 ports:
 	./bashScript.sh
+
+clean-test-env: clean delete-pods-test
+delete-pods-test:
+	kubectl delete -f cicd/queue-master/k8s/ -n test
+	kubectl delete -f cicd/orders/k8s/ -n test
+	kubectl delete -f cicd/payment/k8s/ -n test
+	kubectl delete -f cicd/shipping/k8s/ -n test
+	kubectl delete -f cicd/carts/k8s/ -n test
+	kubectl delete -f cicd/catalogue/k8s/ -n test
+	kubectl delete -f cicd/user/k8s/ -n test
+	kubectl delete -f cicd/frontend/k8s/ -n test
+	kubectl delete -f cicd/user/user-db/k8s/ -n test
+	kubectl delete -f cicd/catalogue/catalogue-db/k8s/ -n test
+
