@@ -63,5 +63,8 @@ stringData:
 
 * To see the logs of the pipelines, run 
  `make logs`
-
+* To clean after the pipelines, run 
+ `make clean`
+* To delete the cluster, run 
+ `make cluster-down`
 
