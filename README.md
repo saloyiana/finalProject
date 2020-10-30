@@ -83,7 +83,7 @@ stringData:
 #### Failing at the test :sweat::
 ![Test Image 4](image/step-3-fail.png)
 
-### Deploying to prod :golf::
+#### Deploying to prod :golf::
 ![Test Image 5](image/step-4.png)
 
 Done. 
