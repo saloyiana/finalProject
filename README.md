@@ -66,22 +66,24 @@ stringData:
 * To delete the cluster, run 
  `make cluster-down`
 * If all the pipelines failed somehow, you may need to delete one of them and rerun it again, makefile will help (e.g. `make frontend-down` and then `make frontend`)   
-That is all, Easy? :smirk:
+
+**That is all, Easy? :smirk:**
 
 ### Examples of the results that may face: 
 
 #### building and pushing the images :woman_juggling::
+![Test Image 1](image/step-1.png)
 
 #### deploying to test :fist_left::
-
+![Test Image 2](image/step-2.png)
 
 #### passing the test :smiley::
-![Test Image 1](image/test.png)
-
+![Test Image 3](image/step-3-pass.png)
 
 #### Failing at the test :sweat::
-![Test Image 1](image/test.png)
+![Test Image 4](image/step-3-fail.png)
 
 ### deploying to prod :golf::
+![Test Image 5](image/step-4.png)
 
 Done. 
