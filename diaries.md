@@ -1,10 +1,8 @@
 ### The working flow:
 
-I managed my time as follows:
+**Each week will have to do title.**
 
-each week will have to do title. 
-
-## Week 1:-   
+## Week 1:   
 
 **Dockerfiles building and running.**
 
@@ -15,6 +13,8 @@ each week will have to do title.
 - Day5: Shipping and payment have been done today ( similar to yesterday's job ) and everything kinda went smoothly after yesterday’s struggle.
 - Day6: Today was user and its database day, I have a problem with the permission denied again, the building phase is successfully done though.
 - Day7: Today is the day of building and running the queue master image and the order image, I faced a lot of errors, some of them I faced before. 
+![Test Image 1](image/week1.png)
+![Test Image 2](image/week1-2.png)
 
 ## Week2:  
 
@@ -28,12 +28,25 @@ each week will have to do title.
 - Day13: Done the writing of the pipelines' job and started with the deploy to test namespace tasks. 
 - Day14: Completed the deploy tasks for each pipeline and the rest of the day off. 
 
+![Test Image 3](image/week2.png)
+![Test Image 4](image/week2-2.png)
+
 ## Week 3:
+
 **Same world**
+
 - Day15: Ran the pipelines that I currently have with two steps and tried to fix the errors, and gave required permissions 
 - Day16: Ran the test locally with the IP, and got stuck with the errors. 
 - Day17: Still Trying to survive 
 - Day18: Started to create tasks for running the test and included them in the pipelines as a new step, didn't try to run them yet. 
 - Day19:  Started with trying to run the test and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and failed and then surprisingly pass!
 - Day20: Created the deploye to prod tasks and completed the pipeline with the last step. 
-- Day21:
+- Day21: Trying to add the clean step and review all the work again ... 
+
+![Test Image 5](image/week3-1.png)
+![Test Image 6](image/later.jpg)
+![Test Image 7](image/week3-2.png)
+
+## There is some tasks that I had done during the days, such as preparing the makefile. 
+
+Done. 
