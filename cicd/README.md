@@ -12,4 +12,7 @@ There are three dirs:
 - tasks: the required tasks and its taskruns.  
 - pipeline: the pipeline and its pipelinerun. 
 
+## e2e-test:
+There is the task to build and push the test image and its task run.   
+
 #### some of them will have 4th dirs, the 4th for the db's tasks. 
