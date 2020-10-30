@@ -40,8 +40,6 @@ spec:
        - "$(resources.inputs.carts.path)/cicd/frontend/k8s/svc.yaml"
        - "-f"
        - "$(resources.inputs.carts.path)/cicd/frontend/k8s/rabbitmq.yaml"
-       - "-f"
-       - "$(resources.inputs.carts.path)/cicd/frontend/k8s/ingress.yaml"
        - "-n"
        - "prod"
 
@@ -51,7 +49,7 @@ spec:
      args:
        - "apply"
        - "-f"
-       - "$(resources.inputs.carts.path)/cicd/catalogue/k8s/deploy.yam"
+       - "$(resources.inputs.carts.path)/cicd/catalogue/k8s/deploy.yaml"
        - "-f"
        - "$(resources.inputs.carts.path)/cicd/catalogue/k8s/svc.yaml"
        - "-f"

@@ -48,7 +48,7 @@ spec:
      args:
        - "apply"
        - "-f"
-       - "$(resources.inputs.frontend-resource.path)/cicd/catalogue/k8s/deploy.yam"
+       - "$(resources.inputs.frontend-resource.path)/cicd/catalogue/k8s/deploy.yaml"
        - "-f"
        - "$(resources.inputs.frontend-resource.path)/cicd/catalogue/k8s/svc.yaml"
        - "-f"
