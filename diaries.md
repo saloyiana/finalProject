@@ -49,6 +49,6 @@
 ![Test Image 8](image/week3-3.png)
 ![Test Image 9](image/week3-4.png)
 
-## There is some tasks that I had done during the days, such as preparing the makefile. 
+## There are other tasks that I had done during the days, such as preparing the makefile. 
 
 Done :golf:.
