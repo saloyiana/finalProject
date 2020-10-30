@@ -68,3 +68,6 @@ stringData:
 * To delete the cluster, run 
  `make cluster-down`
 
+Easy? :face_with_head_bandage:
+
+
