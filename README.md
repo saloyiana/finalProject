@@ -84,4 +84,12 @@ stringData:
 #### Deploying to prod :golf::
 ![Test Image 5](image/step-4.png)
 
-Done. 
+#### Grafana :sparkles::
+![Test Image 5](image/garfana.png)
+
+#### Kibana :page_with_curl::
+
+![Test Image 5](image/kibana-one-of-the-microservices.png)
+![Test Image 5](image/kibana-otherOne.png)
+
+***Done.***
