@@ -1,7 +1,8 @@
 #FIRST STEP:
 
 .PHONY: cluster namespaces tekton cli
-up: cluster namespaces tekton cli install-ingress main frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
+up: cluster namespaces tekton cli install-ingress main elk
+build: frontend cart-install catalogue-install orders-install payment-install user-install shipping-install queue-master-install 
 
 cluster:
 	k3d cluster create sockShop \
@@ -37,7 +38,7 @@ namespaces:
 	kubectl create namespace prod
 	kubectl create namespace ingress-nginx
 	kubectl create namespace logging
-	kubectl create namespace grafana
+	kubectl create namespace monitoring
 install-ingress:
 	echo "Ingress: install" | tee -a output.log
 	kubectl apply -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/cloud/deploy.yaml | tee -a output.log
@@ -51,12 +52,32 @@ elk:
 	helm repo add elastic https://helm.elastic.co
 	helm repo add fluent https://fluent.github.io/helm-charts
 	helm repo update
-	helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=elk
-	helm install fluent-bit fluent/fluent-bit --namespace=elk
-	helm install kibana elastic/kibana --version=7.9.0 --namespace=elk --set service.type=NodePort
+	helm install elasticsearch elastic/elasticsearch --version=7.9.0 --namespace=logging
+	helm install fluent-bit fluent/fluent-bit --namespace=logging
+	helm install kibana elastic/kibana --version=7.9.0 --namespace=logging --set service.type=NodePort
 	kubectl apply -f ELK/ingress.yaml -n logging
 
+delete-elk:
+	helm delete -n logging elasticsearch
+	helm delete -n logging fluent-bit
+	helm delete -n logging kibana
 
+install-prometheus:
+	helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+	helm repo update
+	helm install -f prograf/prometheus-values.yaml prometheus prometheus-community/prometheus -n monitoring | tee -a output.log
+
+delete-prometheus:
+	helm delete -n monitoring prometheus
+
+install-grafana:
+	helm repo add grafana https://grafana.github.io/helm-charts
+	helm repo update
+	helm install -f prograf/grafana-values.yaml grafana grafana/grafana -n monitoring | tee -a output.log
+	echo "Grafana node port "
+	echo "$(kubectl get --namespace monitoring -o jsonpath="{.spec.ports[0].nodePort}" services grafana)"
+delete-grafana:
+	helm delete -n monitoring grafana
 main:
 	kubectl apply -f cicd/main/sa.yaml -n test
 	kubectl apply -f cicd/main/role.yaml
