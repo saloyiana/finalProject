@@ -83,13 +83,13 @@ main:
 	kubectl apply -f cicd/main/role.yaml
 
 frontend:
-	kubectl apply -f cicd/frontend/tasks/pipelineResource.yaml -n test 
-	kubectl apply -f cicd/frontend/tasks/task.yaml -n test 
-	kubectl apply -f cicd/frontend/tasks/deploy-using-kubectl.yaml -n test 
-	kubectl apply -f cicd/frontend/tasks/run-test.yaml -n test 
-	kubectl apply -f cicd/frontend/tasks/deploy-to-prod.yaml -n test 
-	kubectl apply -f cicd/frontend/pipeline/pipeline.yaml -n test 
-	kubectl apply -f cicd/frontend/pipeline/pipelinerun.yaml -n test
+	kubectl apply -f frontend/k8s-tekton/tasks/pipelineResource.yaml -n test 
+	kubectl apply -f frontend/k8s-tekton/tasks/task.yaml -n test 
+	kubectl apply -f frontend/k8s-tekton/tasks/deploy-using-kubectl.yaml -n test 
+	kubectl apply -f frontend/k8s-tekton/tasks/run-test.yaml -n test 
+	kubectl apply -f frontend/k8s-tekton/tasks/deploy-to-prod.yaml -n test 
+	kubectl apply -f frontend/k8s-tekton/pipeline/pipeline.yaml -n test 
+	kubectl apply -f frontend/k8s-tekton/pipeline/pipelinerun.yaml -n test
 frontend-down:
 	kubectl delete -f cicd/frontend/tasks/pipelineResource.yaml -n test 
 	kubectl delete -f cicd/frontend/tasks/task.yaml -n test 

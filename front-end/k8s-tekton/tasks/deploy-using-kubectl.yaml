@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: frontend-deploy-using-kubectl
+  serviceAccountName: build-bot
+spec:
+  params:
+    - name: pathToYamlFile
+      type: string
+      description: The path to the yaml file to deploy within the git source
+      default: $(resources.inputs.frontend-resource.path)/cicd/frontend/k8s/deploy.yaml
+  resources:
+    inputs:
+      - name: frontend-resource
+        type: git
+  steps:
+   - name: run-kubectl
+     image: lachlanevenson/k8s-kubectl
+     command: ["kubectl"]
+     args:
+       - "apply"
+       - "-f"
+       - "$(params.pathToYamlFile)"
+       - "-f"
+       - "$(resources.inputs.frontend-resource.path)/cicd/frontend/k8s/svc.yaml"
+       - "-f"
+       - "$(resources.inputs.frontend-resource.path)/cicd/frontend/k8s/rabbitmq.yaml"
+       - "-n"
+       - "test"
